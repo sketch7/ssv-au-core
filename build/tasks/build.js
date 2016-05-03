@@ -63,6 +63,6 @@ gulp.task("copy-dist:scripts", () => {
 });
 
 gulp.task("copy-dist:dts", () => {
-	return gulp.src(`${paths.output.artifact}/typings/*.d.ts`)
+	return gulp.src(`${paths.output.artifact}/typings/**/*.d.ts`)
 		.pipe(gulp.dest(`${paths.output.dist}/typings`));
 });
