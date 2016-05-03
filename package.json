@@ -1,0 +1,65 @@
+{
+  "name": "ssv-au-core",
+  "version": "0.6.4",
+  "description": "ssv core components, utilities and services",
+  "keywords": [
+    "sketch7",
+    "aurelia",
+    "core",
+    "utils",
+    "logger",
+    "router"
+  ],
+  "author": "Stephen Lautier <stephen.lautier@outlook.com>",
+  "license": "MIT",
+  "main": "dist/amd/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sketch7/ssv-au-core"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "es6-module-loader": "^0.17.11",
+    "gulp": "^3.9.1",
+    "gulp-bump": "^2.1.0",
+    "gulp-conventional-changelog": "^1.1.0",
+    "gulp-git": "^1.7.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-tslint": "^5.0.0",
+    "gulp-tslint-stylish": "^1.1.1",
+    "gulp-typescript": "^2.13.0",
+    "gulp-util": "^3.0.7",
+    "jasmine-core": "^2.4.1",
+    "jspm": "^0.16.34",
+    "karma": "^0.13.22",
+    "karma-appveyor-reporter": "^0.3.0",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-jasmine": "^0.3.8",
+    "karma-mocha-reporter": "^2.0.2",
+    "karma-systemjs": "^0.13.0",
+    "merge2": "^1.0.2",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.5",
+    "systemjs": "^0.19.27",
+    "tslint": "^3.8.1",
+    "typescript": "^1.8.10",
+    "yargs": "^4.6.0"
+  },
+  "dependencies": {},
+  "jspm": {
+    "registry": "jspm",
+    "main": "amd/index",
+    "format": "amd",
+    "directories": {
+      "dist": "dist"
+    },
+    "configFile": "system.config.js",
+    "dependencies": {
+      "aurelia-logging": "npm:aurelia-logging@^1.0.0-beta.1.2.0",
+      "lodash": "npm:lodash@^4.0.0"
+    },
+    "devDependencies": {}
+  },
+  "typings": "dist/typings/index.d.ts"
+}
