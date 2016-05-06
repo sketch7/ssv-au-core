@@ -1,4 +1,4 @@
-import {LogService} from "./logger.svc";
+import {LogService} from "./logger.srv";
 
 
 describe("LogServiceSpecs", () => {
