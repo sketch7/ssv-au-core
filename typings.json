@@ -2,6 +2,7 @@
 	"name": "ssv-au-core",
 	"main": "dist/typings/index.d.ts",
 	"ambientDependencies": {
+		"es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
 		"lodash": "registry:dt/lodash#3.10.0+20160330154726"
 	},
 	"ambientDevDependencies": {

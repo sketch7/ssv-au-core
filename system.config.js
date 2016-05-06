@@ -8,6 +8,7 @@ System.config({
 
   map: {
     "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.0",
+    "aurelia-router": "npm:aurelia-router@1.0.0-beta.1.2.1",
     "lodash": "npm:lodash@4.11.2",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -23,6 +24,28 @@ System.config({
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
+    },
+    "npm:aurelia-dependency-injection@1.0.0-beta.1.2.2": {
+      "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.0",
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.0",
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.2.1"
+    },
+    "npm:aurelia-event-aggregator@1.0.0-beta.1.2.0": {
+      "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.0"
+    },
+    "npm:aurelia-metadata@1.0.0-beta.1.2.0": {
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.2.1"
+    },
+    "npm:aurelia-route-recognizer@1.0.0-beta.1.2.0": {
+      "aurelia-path": "npm:aurelia-path@1.0.0-beta.1.2.1"
+    },
+    "npm:aurelia-router@1.0.0-beta.1.2.1": {
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.2.2",
+      "aurelia-event-aggregator": "npm:aurelia-event-aggregator@1.0.0-beta.1.2.0",
+      "aurelia-history": "npm:aurelia-history@1.0.0-beta.1.2.0",
+      "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.0",
+      "aurelia-path": "npm:aurelia-path@1.0.0-beta.1.2.1",
+      "aurelia-route-recognizer": "npm:aurelia-route-recognizer@1.0.0-beta.1.2.0"
     },
     "npm:buffer@3.6.0": {
       "base64-js": "npm:base64-js@0.0.8",
