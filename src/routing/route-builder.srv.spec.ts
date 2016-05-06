@@ -67,7 +67,6 @@ describe("RouteBuilderSpecs", () => {
 		(<jasmine.Spy>logService.getLogger).and.returnValue(logging);
 
 		SUT = new RouteBuilder(logService);
-
 	});
 
 	describe("mapSpecs", () => {
@@ -83,85 +82,81 @@ describe("RouteBuilderSpecs", () => {
 
 	});
 
-	// describe("generateUrlSpecs", () => {
+	describe("generateUrlSpecs", () => {
 
-	// 	describe("given a simple structure", () => {
+		describe("given a simple structure", () => {
 
-	// 		beforeEach(() => {
-	// 			SUT.map(simpleRouteStructure);
-	// 		});
+			beforeEach(() => {
+				SUT.map(simpleRouteStructure);
+			});
 
-	// 		it("should generate url from route correctly", () => {
+			it("should generate url from route correctly", () => {
+				let result = SUT.generateUrl("profile");
+				expect(result).toBe("/user");
+			});
 
-	// 			let result = SUT.generateUrl("profile");
-	// 			expect(result).toBe("/user");
+			describe("when the route is blank", () => {
 
-	// 		});
+				it("should be empty", () => {
+					let result = SUT.generateUrl("home");
+					expect(result).toBe("/");
+				});
+			});
 
-	// 		describe("when the route is blank", () => {
+		});
 
-	// 			it("should be empty", () => {
-	// 				let result = SUT.generateUrl("home");
-	// 				expect(result).toBe("/");
-	// 			});
-	// 		});
+		describe("given a route with param", () => {
 
-	// 	});
+			beforeEach(() => {
+				SUT.map(simpleRouteStructure);
+			});
 
-	// 	describe("given a route with param", () => {
+			it("should generate url with data interpolated", () => {
+				const routeParams = [{ key: ":language", value: "en" }];
+				let result = SUT.generateUrl("language", routeParams);
+				expect(result).toBe("/en");
+			});
 
-	// 		beforeEach(() => {
-	// 			SUT.map(simpleRouteStructure);
-	// 		});
+			describe("when the params are not provided", () => {
 
-	// 		it("should generate url with data interpolated", () => {
-	// 			const routeParams = [{ key: ":language", value: "en" }];
-	// 			let result = SUT.generateUrl("language", routeParams);
-	// 			expect(result).toBe("/en");
-	// 		});
+				it("should throw error", () => {
+					expect(() => SUT.generateUrl("language"))
+						.toThrowError();
+				});
+			});
 
-	// 		describe("when the params are not provided", () => {
+		});
 
-	// 			it("should throw error", () => {
-	// 				expect(() => SUT.generateUrl("language"))
-	// 					.toThrowError();
-	// 			});
-	// 		});
+		describe("given a route with parent", () => {
 
-	// 	});
+			beforeEach(() => {
+				SUT.map(complexRouteStructure);
+			});
 
-	// 	describe("given a route with parent", () => {
+			describe("when having one level parent", () => {
 
-	// 		beforeEach(() => {
-	// 			SUT.map(complexRouteStructure);
-	// 		});
+				it("should generate url with parent", () => {
+					// let result = SUT.generateUrl("admin.user-groups");
+					let result = SUT.generateUrl("user-groups");
+					expect(result).toBe("/administration/user-groups");
+				});
 
-	// 		describe("when having one level parent", () => {
+			});
 
-	// 			it("should generate url with parent", () => {
+			describe("when having a param", () => {
 
-	// 				let result = SUT.generateUrl("admin.user-groups");
-	// 				expect(result).toBe("/administration/user-groups");
+				it("should generate url with parent and param", () => {
+					const routeParams = [{ key: ":userGroup", value: "core" }];
+					let result = SUT.generateUrl("user-groups-detail", routeParams);
+					expect(result).toBe("/administration/user-groups/core");
 
-	// 			});
+				});
 
-	// 		});
+			});
 
-	// 		describe("when having a param", () => {
-
-	// 			it("should generate url with parent and param", () => {
-
-	// 				const routeParams = [{ key: ":userGroup", value: "core" }];
-	// 				let result = SUT.generateUrl("admin.user-groups", routeParams);
-	// 				expect(result).toBe("/administration/user-groups/core");
-
-	// 			});
-
-	// 		});
-
-	// 	});
+		});
 
 
-	// });
+	});
 
 });

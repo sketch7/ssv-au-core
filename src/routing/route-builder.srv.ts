@@ -1,14 +1,16 @@
-// import {autoinject} from "aurelia-framework";
 import {RouteConfig} from "aurelia-router";
 import * as _ from "lodash";
 
 import {LogService, ILog} from "../logging/logging";
 
-const id = "route.builder";
+const id = "route-builder.srv";
 
-// todo: create verify() - which verifies keys exists for parents.
+// todo: use maps for keys
+// todo: change RouteParams to use interpolate instead
+// todo: when parent, generate key combined with parents?
+// todo: implement verify() - which verifies keys exists for parents.
 
-//@autoinject
+// @autoinject
 export class RouteBuilder {
 	private logger: ILog;
 	private routes: Route[] = [];
@@ -59,7 +61,7 @@ export class RouteBuilder {
 
 			if (!param) {
 				this.logger.error("buildRoutePath", "param not found!", { param: routeValue, params: params });
-				return "";
+				throw Error(`route param '${routeValue}' not found!`);
 			}
 
 			routeValue = param.value;
