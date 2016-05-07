@@ -6,9 +6,10 @@ import {LogService, ILog} from "../logging/logging";
 const id = "route-builder.srv";
 
 // todo: use maps for keys
+// todo: map (with ...rest) and mapAll
 // todo: change RouteParams to use interpolate instead
-// todo: when parent, generate key combined with parents?
 // todo: implement verify() - which verifies keys exists for parents.
+// todo: add validation for model or model.route when undefined should throw
 
 // @autoinject
 export class RouteBuilder {
@@ -24,29 +25,33 @@ export class RouteBuilder {
 
 	map(routes: Route[]) {
 		for (let route of routes) {
-			const selectedRoute = _.find(this.routes, { key: route.key });
+			const selectedRoute = this.get(route.key);
 
 			if (selectedRoute) {
-				this.logger.error("map", "selected route already exists!", { routeKey: route.key });
-				continue;
+				throw Error(`registering a route '${route.key}' which already exists!`);
 			}
+
+			route.parentKey = this.extractParentKey(route);
 
 			this.routes.push(route);
 		}
 	}
 
-	generateUrl(key: string, params?: RouteParams[]): string {
-		this.logger.debug("getByKey", "searching route..", { key: key, params: params, routes: this.routes });
+	get(key: string): Route {
+		return _.find(this.routes, { key: key });
+	}
 
-		const route = _.find(this.routes, { key: key });
+	generateUrl(key: string, params?: RouteParams[]): string {
+		this.logger.debug("generateUrl", "searching route..", { key: key, params: params, routes: this.routes });
+
+		const route = this.get(key);
 
 		if (!route) {
-			this.logger.error("getByKey", "route not found", { routeKey: key });
-			return "";
+			throw Error(`generating url for route '${route.key}' not found!`);
 		}
 
 		let routePath = this.buildRoutePath(route, "", params);
-		this.logger.debug("getByKey", "route found", { key: key, params: params, routePath: routePath });
+		this.logger.debug("generateUrl", "route found", { key: key, params: params, routePath: routePath });
 
 		return routePath;
 	}
@@ -54,13 +59,13 @@ export class RouteBuilder {
 	private buildRoutePath(menuItem: Route, routePath: string, params?: RouteParams[]): string {
 		this.logger.debug("buildRoutePath", "building route..", { menuItem: menuItem, routePath: routePath });
 
+		// todo: handle array or string
 		let routeValue = <string>menuItem.model.route;
 
 		if (_.startsWith(routeValue, ":", 0)) {
 			const param = _.find(params, { key: routeValue });
 
 			if (!param) {
-				this.logger.error("buildRoutePath", "param not found!", { param: routeValue, params: params });
 				throw Error(`route param '${routeValue}' not found!`);
 			}
 
@@ -70,11 +75,25 @@ export class RouteBuilder {
 		routePath = `/${routeValue}${routePath}`;
 
 		if (menuItem.parentKey) {
-			const route = _.find(this.routes, { key: menuItem.parentKey });
+			const route = this.get(menuItem.parentKey);
 			return this.buildRoutePath(route, routePath, params);
 		}
 
 		return routePath;
+	}
+
+	private extractParentKey(route: Route): string {
+
+		if (!_.isUndefined(route.parentKey)) {
+			return route.parentKey;
+		}
+
+		const keySplit = route.key.split(".");
+		if (keySplit.length === 1) {
+			return undefined;
+		}
+
+		return keySplit[0];
 	}
 }
 

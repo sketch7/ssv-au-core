@@ -14,7 +14,7 @@ let simpleRouteStructure: Route[] = [
 	}, {
 		key: "admin",
 		model: {
-			route: "administration"
+			route: "admin"
 		}
 	}, {
 		key: "profile",
@@ -38,13 +38,18 @@ let complexRouteStructure: Route[] = [
 	}, {
 		key: "admin",
 		model: {
-			route: "administration"
+			route: "admin"
 		}
 	}, {
 		key: "user-groups",
 		parentKey: "admin",
 		model: {
 			route: "user-groups"
+		}
+	}, {
+		key: "admin.users",
+		model: {
+			route: "users"
 		}
 	}, {
 		key: "user-groups-detail",
@@ -80,9 +85,80 @@ describe("RouteBuilderSpecs", () => {
 			]);
 		});
 
+		describe("given already exists key", () => {
+
+			it("should throw an error", () => {
+
+				expect(() => {
+					SUT.map([{
+						key: "parent",
+						model: null
+					}, {
+							key: "parent",
+							model: null,
+						}
+					]);
+				}).toThrowError();
+
+			});
+		});
+
+		describe("given key with dot notation", () => {
+
+			it("should register as parent", () => {
+				SUT.map([{
+					key: "language",
+					model: null
+				}, {
+						key: "language.admin",
+						model: null,
+					}
+				]);
+
+				expect(SUT.get("language")).toBeDefined();
+				expect(SUT.get("language.admin")).toBeDefined();
+				expect(SUT.get("language.admin").parentKey).toBe("language");
+			});
+
+			describe("when the parentKey is specified", () => {
+
+				it("should use the parent from the parentKey provided", () => {
+					SUT.map([{
+						key: "language",
+						model: null
+					}, {
+							key: "language.admin",
+							model: null,
+						}, {
+							key: "admin.user-groups",
+							parentKey: "language.admin",
+							model: null,
+						}
+					]);
+
+					expect(SUT.get("language.admin")).toBeDefined();
+					expect(SUT.get("admin.user-groups").parentKey).toBe("language.admin");
+				});
+			});
+		});
+
 	});
 
+
 	describe("generateUrlSpecs", () => {
+
+		describe("given a non existing route", () => {
+
+			beforeEach(() => {
+				SUT.map(simpleRouteStructure);
+			});
+
+			it("should throw error", () => {
+				expect( () => {
+					SUT.generateUrl("not-found");
+				}).toThrowError();
+			});
+		});
 
 		describe("given a simple structure", () => {
 
@@ -97,7 +173,7 @@ describe("RouteBuilderSpecs", () => {
 
 			describe("when the route is blank", () => {
 
-				it("should be empty", () => {
+				it("should be '/'", () => {
 					let result = SUT.generateUrl("home");
 					expect(result).toBe("/");
 				});
@@ -133,12 +209,16 @@ describe("RouteBuilderSpecs", () => {
 				SUT.map(complexRouteStructure);
 			});
 
-			describe("when having one level parent", () => {
+			it("should generate url with parent", () => {
+				let result = SUT.generateUrl("user-groups");
+				expect(result).toBe("/admin/user-groups");
+			});
+
+			describe("when having parent registered with dot", () => {
 
 				it("should generate url with parent", () => {
-					// let result = SUT.generateUrl("admin.user-groups");
-					let result = SUT.generateUrl("user-groups");
-					expect(result).toBe("/administration/user-groups");
+					let result = SUT.generateUrl("admin.users");
+					expect(result).toBe("/admin/users");
 				});
 
 			});
@@ -148,15 +228,16 @@ describe("RouteBuilderSpecs", () => {
 				it("should generate url with parent and param", () => {
 					const routeParams = [{ key: ":userGroup", value: "core" }];
 					let result = SUT.generateUrl("user-groups-detail", routeParams);
-					expect(result).toBe("/administration/user-groups/core");
+					// let result = SUT.generateUrl("user-groups-detail", {
+					// 	userGroup: "core"
+					// });
+					expect(result).toBe("/admin/user-groups/core");
 
 				});
 
 			});
 
 		});
-
-
 	});
 
 });
