@@ -6,16 +6,14 @@ import {LogService, ILog} from "../logging/logging";
 
 const id = "route-builder.srv";
 
-// todo: use maps for keys
 // todo: map (with ...rest) and mapAll
-// todo: change RouteParams to use interpolate instead
 // todo: implement verify() - which verifies keys exists for parents.
 // todo: add validation for model or model.route when undefined should throw
 
 // @autoinject
 export class RouteBuilder {
 	private logger: ILog;
-	private routes: Route[] = [];
+	private routes: Map<string, Route> = new Map<string, Route>();
 
 	constructor(
 		logService: LogService
@@ -34,12 +32,12 @@ export class RouteBuilder {
 
 			route.parentKey = this.extractParentKey(route);
 
-			this.routes.push(route);
+			this.routes.set(route.key, route);
 		}
 	}
 
 	get(key: string): Route {
-		return _.find(this.routes, { key: key });
+		return this.routes.get(key);
 	}
 
 	generateUrl(key: string, data?: any): string {
