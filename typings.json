@@ -8,5 +8,8 @@
 	"ambientDevDependencies": {
 		"jasmine": "registry:dt/jasmine#2.2.0+20160412134438",
 		"jasmine-es6-promise-matchers": "registry:dt/jasmine-es6-promise-matchers#0.0.0+20160317120654"
+	},
+	"dependencies": {
+		"ssv-core": "github:sketch7/ssv-core"
 	}
 }

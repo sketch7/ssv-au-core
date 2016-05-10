@@ -1,6 +1,6 @@
-// import "aurelia-polyfills";
 import {RouteBuilder, Route} from "./route-builder.srv";
 import {LogService, ILog} from "../logging/logging";
+
 
 // beforeEach(JasminePromiseMatchers.install);
 // afterEach(JasminePromiseMatchers.uninstall);
@@ -25,6 +25,16 @@ let simpleRouteStructure: Route[] = [
 		key: "language",
 		model: {
 			route: ":language"
+		}
+	}, {
+		key: "multi-route",
+		model: {
+			route: ["", "dashboard"]
+		}
+	}, {
+		key: "slash",
+		model: {
+			route: "/"
 		}
 	},
 ];
@@ -154,7 +164,7 @@ describe("RouteBuilderSpecs", () => {
 			});
 
 			it("should throw error", () => {
-				expect( () => {
+				expect(() => {
 					SUT.generateUrl("not-found");
 				}).toThrowError();
 			});
@@ -179,6 +189,27 @@ describe("RouteBuilderSpecs", () => {
 				});
 			});
 
+			describe("when the route is '/'", () => {
+
+				it("should be '/'", () => {
+					let result = SUT.generateUrl("slash");
+					expect(result).toBe("/");
+				});
+			});
+
+		});
+
+		describe("given route with multiple routes", () => {
+
+			beforeEach(() => {
+				SUT.map(simpleRouteStructure);
+			});
+
+			it("should generate url from first index", () => {
+				let result = SUT.generateUrl("multi-route");
+				expect(result).toBe("/");
+			});
+
 		});
 
 		describe("given a route with param", () => {
@@ -188,8 +219,9 @@ describe("RouteBuilderSpecs", () => {
 			});
 
 			it("should generate url with data interpolated", () => {
-				const routeParams = [{ key: ":language", value: "en" }];
-				let result = SUT.generateUrl("language", routeParams);
+				let result = SUT.generateUrl("language", {
+					language: "en"
+				});
 				expect(result).toBe("/en");
 			});
 
@@ -198,6 +230,15 @@ describe("RouteBuilderSpecs", () => {
 				it("should throw error", () => {
 					expect(() => SUT.generateUrl("language"))
 						.toThrowError();
+				});
+			});
+
+			describe("when the params are not provided correctly", () => {
+
+				it("should throw error", () => {
+					expect(() => SUT.generateUrl("language", {
+						langauge: "en"
+					})).toThrowError();
 				});
 			});
 
@@ -226,13 +267,10 @@ describe("RouteBuilderSpecs", () => {
 			describe("when having a param", () => {
 
 				it("should generate url with parent and param", () => {
-					const routeParams = [{ key: ":userGroup", value: "core" }];
-					let result = SUT.generateUrl("user-groups-detail", routeParams);
-					// let result = SUT.generateUrl("user-groups-detail", {
-					// 	userGroup: "core"
-					// });
+					let result = SUT.generateUrl("user-groups-detail", {
+						userGroup: "core"
+					});
 					expect(result).toBe("/admin/user-groups/core");
-
 				});
 
 			});

@@ -9,7 +9,8 @@ System.config({
   map: {
     "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.0",
     "aurelia-router": "npm:aurelia-router@1.0.0-beta.1.2.1",
-    "lodash": "npm:lodash@4.11.2",
+    "lodash": "npm:lodash@4.12.0",
+    "ssv-core": "npm:ssv-core@0.6.4",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -17,7 +18,7 @@ System.config({
       "buffer": "npm:buffer@3.6.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
-      "process": "npm:process@0.11.2"
+      "process": "npm:process@0.11.3"
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
@@ -58,12 +59,15 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:lodash@4.11.2": {
+    "npm:lodash@4.12.0": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:process@0.11.2": {
+    "npm:process@0.11.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
+    },
+    "npm:ssv-core@0.6.4": {
+      "lodash": "npm:lodash@4.12.0"
     },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",

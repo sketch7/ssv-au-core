@@ -1,5 +1,6 @@
 import {RouteConfig} from "aurelia-router";
 import * as _ from "lodash";
+import {utils} from "ssv-core";
 
 import {LogService, ILog} from "../logging/logging";
 
@@ -41,8 +42,8 @@ export class RouteBuilder {
 		return _.find(this.routes, { key: key });
 	}
 
-	generateUrl(key: string, params?: RouteParams[]): string {
-		this.logger.debug("generateUrl", "searching route..", { key: key, params: params, routes: this.routes });
+	generateUrl(key: string, data?: any): string {
+		this.logger.debug("generateUrl", "searching route..", { key: key, data: data, routes: this.routes });
 
 		const route = this.get(key);
 
@@ -50,33 +51,38 @@ export class RouteBuilder {
 			throw Error(`generating url for route '${route.key}' not found!`);
 		}
 
-		let routePath = this.buildRoutePath(route, "", params);
-		this.logger.debug("generateUrl", "route found", { key: key, params: params, routePath: routePath });
+		let routePath = this.buildRoutePath(route, "", data);
+		this.logger.debug("generateUrl", "route found", { key: key, data: data, routePath: routePath });
 
 		return routePath;
 	}
 
-	private buildRoutePath(menuItem: Route, routePath: string, params?: RouteParams[]): string {
+	private buildRoutePath(menuItem: Route, routePath: string, data?: any): string {
 		this.logger.debug("buildRoutePath", "building route..", { menuItem: menuItem, routePath: routePath });
+		const route = menuItem.model.route;
 
-		// todo: handle array or string
-		let routeValue = <string>menuItem.model.route;
+		let routeValue: string;
+		if (typeof route === "string") {
+			routeValue = route;
+		} else {
+			routeValue = route[0];
+		}
 
-		if (_.startsWith(routeValue, ":", 0)) {
-			const param = _.find(params, { key: routeValue });
-
-			if (!param) {
-				throw Error(`route param '${routeValue}' not found!`);
+		if (routeValue.indexOf(":") >= 0) {
+			const routeValueCopy = routeValue;
+			routeValue = utils.string.interpolate(routeValue, data, ":");
+			if (routeValueCopy === routeValue) {
+				throw new Error(`route params for '${routeValue}' are not interpolated.`);
 			}
-
-			routeValue = param.value;
 		}
 
 		routePath = `/${routeValue}${routePath}`;
-
+		if (routePath.indexOf("//") >= 0) {
+			routePath = this.replaceAll(routePath, "//", "/");
+		}
 		if (menuItem.parentKey) {
-			const route = this.get(menuItem.parentKey);
-			return this.buildRoutePath(route, routePath, params);
+			const parentRoute = this.get(menuItem.parentKey);
+			return this.buildRoutePath(parentRoute, routePath, data);
 		}
 
 		return routePath;
@@ -95,6 +101,11 @@ export class RouteBuilder {
 
 		return keySplit[0];
 	}
+
+	// todo: move to ssv-core
+	private replaceAll(value: string, search: string, replacement: string): string {
+		return value.replace(new RegExp(search, "g"), replacement);
+	};
 }
 
 export interface Route {
