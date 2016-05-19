@@ -1,8 +1,8 @@
 {
   "resolution": "main",
   "tree": {
-    "src": "https://raw.githubusercontent.com/sketch7/ssv-core/master/typings.json",
-    "raw": "github:sketch7/ssv-core",
+    "src": "https://raw.githubusercontent.com/sketch7/ssv-core/0.6.5/typings.json",
+    "raw": "github:sketch7/ssv-core#0.6.5",
     "main": "dist/typings/index.d.ts",
     "global": false,
     "name": "ssv-core",

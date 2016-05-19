@@ -10,6 +10,6 @@
 		"jasmine-es6-promise-matchers": "registry:dt/jasmine-es6-promise-matchers#0.0.0+20160317120654"
 	},
 	"dependencies": {
-		"ssv-core": "github:sketch7/ssv-core"
+		"ssv-core": "github:sketch7/ssv-core#0.6.5"
 	}
 }
