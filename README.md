@@ -23,21 +23,26 @@ In order to contribute please read the [Contribution guidelines][contribWiki].
 [Change logs][changeLog] | [Project Repository][projectUri] | [Contribution guidelines][contribWiki]
 
 # Installation
+
+Get library via [npm]
+```bash
+npm install ssv-au-core --save
+```
+
 Get library via [jspm]
 ```bash
 jspm install ssv-au-core
 ```
+
 TypeScript Typings via [typings]
 ```bash
 typings install github:sketch7/ssv-au-core --save
 ```
 
 # Usage
-```javascript
-// todo: add sample
-import {logger} from "ssv-au-core";
 
-```
+## Logger
+Read more how to use [Logger](./src/logging/README.md).
 
 
 # Getting Started

@@ -17,7 +17,7 @@ function runTests(singleRun, cb) {
 	new Karma({
 		configFile: path.join(__dirname, `../../${config.src.karmaConfig}`),
 		singleRun: singleRun,
-		autoWatch: !singleRun,
+		autoWatch: !singleRun
 	}, (code) => {
 		
 		// make sure failed karma tests cause gulp to exit non-zero
