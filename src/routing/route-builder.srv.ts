@@ -24,6 +24,9 @@ export class RouteBuilder {
 
 	map(routes: Route[]) {
 		for (let route of routes) {
+
+			this.validate(route);
+
 			const selectedRoute = this.get(route.key);
 
 			if (selectedRoute) {
@@ -55,6 +58,15 @@ export class RouteBuilder {
 		return routePath;
 	}
 
+	private validate(route: Route): void {
+		if (!route.key) {
+			throw new Error("Route key must be defined");
+		}
+		if (route.model.route === undefined || route.model.route === null) {
+			throw new Error(`Route not defined for '${route.key}'`);
+		}
+	}
+
 	private buildRoutePath(menuItem: Route, routePath: string, data?: any): string {
 		this.logger.debug("buildRoutePath", "building route..", { menuItem: menuItem, routePath: routePath });
 		const route = menuItem.model.route;
@@ -76,7 +88,7 @@ export class RouteBuilder {
 
 		routePath = `/${routeValue}${routePath}`;
 		if (routePath.indexOf("//") >= 0) {
-			routePath = this.replaceAll(routePath, "//", "/");
+			routePath = utils.string.replaceAll(routePath, "//", "/");
 		}
 		if (menuItem.parentKey) {
 			const parentRoute = this.get(menuItem.parentKey);
@@ -99,11 +111,6 @@ export class RouteBuilder {
 
 		return keySplit[0];
 	}
-
-	// todo: move to ssv-core
-	private replaceAll(value: string, search: string, replacement: string): string {
-		return value.replace(new RegExp(search, "g"), replacement);
-	};
 }
 
 export interface Route {

@@ -2,9 +2,6 @@ import {RouteBuilder, Route} from "./route-builder.srv";
 import {LogService, ILog} from "../logging/logging";
 
 
-// beforeEach(JasminePromiseMatchers.install);
-// afterEach(JasminePromiseMatchers.uninstall);
-
 let simpleRouteStructure: Route[] = [
 	{
 		key: "home",
@@ -90,7 +87,9 @@ describe("RouteBuilderSpecs", () => {
 			SUT.map([
 				{
 					key: "register",
-					model: null,
+					model: {
+						route: "register"
+					},
 				}
 			]);
 		});
@@ -98,18 +97,48 @@ describe("RouteBuilderSpecs", () => {
 		describe("given already exists key", () => {
 
 			it("should throw an error", () => {
-
 				expect(() => {
 					SUT.map([{
 						key: "parent",
-						model: null
+						model: {
+							route: "admin"
+						},
 					}, {
 							key: "parent",
-							model: null,
+							model: {
+								route: "register"
+							},
 						}
 					]);
 				}).toThrowError();
+			});
+		});
 
+		describe("given an empty key", () => {
+
+			it("should throw an error", () => {
+				expect(() => {
+					SUT.map([{
+						key: "",
+						model: {
+							route: ""
+						}
+					}]);
+				}).toThrowError();
+			});
+		});
+
+		describe("given an undefined route", () => {
+
+			it("should throw an error", () => {
+				expect(() => {
+					SUT.map([{
+						key: "undefined-route",
+						model: {
+							route: undefined
+						}
+					}]);
+				}).toThrowError();
 			});
 		});
 
@@ -118,10 +147,14 @@ describe("RouteBuilderSpecs", () => {
 			it("should register as parent", () => {
 				SUT.map([{
 					key: "language",
-					model: null
+					model: {
+						route: ""
+					}
 				}, {
 						key: "language.admin",
-						model: null,
+						model: {
+							route: "/admin"
+						}
 					}
 				]);
 
@@ -135,14 +168,20 @@ describe("RouteBuilderSpecs", () => {
 				it("should use the parent from the parentKey provided", () => {
 					SUT.map([{
 						key: "language",
-						model: null
+						model: {
+							route: ":language"
+						}
 					}, {
 							key: "language.admin",
-							model: null,
+							model: {
+								route: "/admin"
+							}
 						}, {
 							key: "admin.user-groups",
 							parentKey: "language.admin",
-							model: null,
+							model: {
+								route: "/user-groups"
+							}
 						}
 					]);
 
