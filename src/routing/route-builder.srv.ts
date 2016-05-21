@@ -8,7 +8,6 @@ const id = "route-builder.srv";
 
 // todo: map (with ...rest) and mapAll
 // todo: implement verify() - which verifies keys exists for parents.
-// todo: add validation for model or model.route when undefined should throw
 
 // @autoinject
 export class RouteBuilder {
