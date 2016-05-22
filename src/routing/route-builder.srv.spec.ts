@@ -317,4 +317,61 @@ describe("RouteBuilderSpecs", () => {
 		});
 	});
 
+
+	describe("verifySpecs", () => {
+		describe("given all parents are valid", () => {
+
+			beforeEach(() => {
+				SUT.map([{
+					key: "admin",
+					model: {
+						route: "admin"
+					},
+				}, {
+						key: "users",
+						parentKey: "admin",
+						model: {
+							route: "register"
+						},
+					}
+				]);
+			});
+
+			describe("when the verify is invoked", () => {
+				it("should be successful", () => {
+					SUT.verify();
+				});
+			});
+
+		});
+
+		describe("given a parent which doesn't exists", () => {
+
+			beforeEach(() => {
+				SUT.map([{
+					key: "admin",
+					model: {
+						route: "admin"
+					},
+				}, {
+						key: "users",
+						parentKey: "admin-invalid",
+						model: {
+							route: "register"
+						},
+					}
+				]);
+			});
+
+			describe("when the verify is invoked", () => {
+				it("should throw an error", () => {
+					expect(() => {
+						SUT.verify();
+					}).toThrowError(`Parent 'admin-invalid' not found for route key 'users'`);
+				});
+			});
+
+		});
+	});
+
 });

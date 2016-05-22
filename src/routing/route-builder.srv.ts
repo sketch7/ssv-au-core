@@ -7,7 +7,6 @@ import {LogService, ILog} from "../logging/logging";
 const id = "route-builder.srv";
 
 // todo: map (with ...rest) and mapAll
-// todo: implement verify() - which verifies keys exists for parents.
 
 // @autoinject
 export class RouteBuilder {
@@ -57,6 +56,22 @@ export class RouteBuilder {
 		return routePath;
 	}
 
+	verify(): void {
+		this.routes.forEach((route) => {
+			this.verifyParent(route);
+		});
+	}
+
+	private verifyParent(route: Route): void {
+		if (!route.parentKey) {
+			return;
+		}
+		const parent = this.get(route.parentKey);
+		if (!parent) {
+			throw new Error(`Parent '${route.parentKey}' not found for route key '${route.key}'`);
+		}
+	}
+
 	private validate(route: Route): void {
 		if (!route.key) {
 			throw new Error("Route key must be defined");
@@ -98,7 +113,6 @@ export class RouteBuilder {
 	}
 
 	private extractParentKey(route: Route): string {
-
 		if (!_.isUndefined(route.parentKey)) {
 			return route.parentKey;
 		}
