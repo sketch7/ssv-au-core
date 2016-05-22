@@ -2,7 +2,6 @@ module.exports = function (config) {
 	config.set({
 		basePath: "./",
 		frameworks: ["systemjs", "jasmine"],
-		
 		systemjs: {
 			configFile: "system.config.js",
 			config: {
@@ -27,6 +26,9 @@ module.exports = function (config) {
 			]
 		},
 		files: [
+			// polyfills
+			"node_modules/es6-shim/es6-shim.js",
+
 			"src/**/*.spec.ts",
 			"src/*.spec.ts"
 		],
