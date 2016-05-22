@@ -47,7 +47,11 @@
     "typescript": "^1.8.10",
     "yargs": "^4.7.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "aurelia-dependency-injection": "^1.0.0-beta.1.2.3",
+    "aurelia-logging": "^1.0.0-beta.1.2.1",
+    "ssv-core": "^0.6.5"
+  },
   "jspm": {
     "registry": "jspm",
     "main": "amd/index",
@@ -57,12 +61,15 @@
     },
     "configFile": "system.config.js",
     "dependencies": {
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0-beta.1.2.3",
       "aurelia-logging": "npm:aurelia-logging@^1.0.0-beta.1.2.0",
       "aurelia-router": "npm:aurelia-router@^1.0.0-beta.1.2.1",
       "lodash": "npm:lodash@^4.0.0",
       "ssv-core": "npm:ssv-core@^0.6.4"
     },
-    "devDependencies": {}
+    "devDependencies": {
+		"aurelia-polyfills": "npm:aurelia-polyfills@^1.0.0-beta.1.1.4"
+	}
   },
   "typings": "dist/typings/index.d.ts"
 }

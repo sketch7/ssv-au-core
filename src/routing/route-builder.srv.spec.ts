@@ -1,3 +1,4 @@
+import "aurelia-polyfills";
 import {RouteBuilder, Route} from "./route-builder.srv";
 import {LogService, ILog} from "../logging/logging";
 

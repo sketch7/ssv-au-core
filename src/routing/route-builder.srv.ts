@@ -1,3 +1,4 @@
+import {autoinject} from "aurelia-dependency-injection";
 import {RouteConfig} from "aurelia-router";
 import * as _ from "lodash";
 import {utils} from "ssv-core";
@@ -8,7 +9,7 @@ const id = "route-builder.srv";
 
 // todo: map (with ...rest) and mapAll
 
-// @autoinject
+@autoinject
 export class RouteBuilder {
 	private logger: ILog;
 	private routes: Map<string, Route> = new Map<string, Route>();
