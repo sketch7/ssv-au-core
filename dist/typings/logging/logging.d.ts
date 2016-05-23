@@ -1,1 +1,1 @@
-export * from "./logger.svc";
+export * from "./logger.srv";
