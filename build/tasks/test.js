@@ -19,7 +19,7 @@ function runTests(singleRun, cb) {
 		singleRun: singleRun,
 		autoWatch: !singleRun
 	}, (code) => {
-		
+
 		// make sure failed karma tests cause gulp to exit non-zero
 		if (code === 1) {
 			gutil.log(gutil.colors.red("------- Error: unit test failed -------"));
