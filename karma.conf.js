@@ -1,7 +1,10 @@
+const conf = require("./build/config");
+
 module.exports = function (config) {
 	config.set({
 		basePath: "./",
 		frameworks: ["systemjs", "jasmine"],
+
 		systemjs: {
 			configFile: "system.config.js",
 			config: {
@@ -21,7 +24,7 @@ module.exports = function (config) {
 				transpiler: "typescript"
 			},
 			serveFiles: [
-				"src/**/*.ts",
+				conf.src.ts,
 				"jspm_packages/**/*.js"
 			]
 		},
@@ -29,17 +32,17 @@ module.exports = function (config) {
 			// polyfills
 			"node_modules/es6-shim/es6-shim.js",
 
-			"src/**/*.spec.ts",
+			conf.src.testTs,
 			"src/*.spec.ts"
 		],
 		exclude: [],
 		preprocessors: {},
-		reporters: ["mocha", "appveyor"],
+		reporters: ["mocha"], // note: gulp using config from config.js instead
 		port: 9876,
 		colors: true,
 		logLevel: config.LOG_INFO,
 		autoWatch: true,
-		browsers: ["Chrome"],
+		browsers: ["Chrome"], // note: gulp using config from config.js instead
 		singleRun: false
 	});
 };
