@@ -1,18 +1,29 @@
 {
 	"compilerOptions": {
-		"module": "amd",
-		"target": "es5",
+		"module": "es2015",
+		"target": "es2015",
+		"moduleResolution": "node",
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"declaration": true,
 		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
 		"noImplicitAny": true,
 		"noFallthroughCasesInSwitch": true,
-		"noEmitOnError": true
+		"noEmitOnError": true,
+		"strictNullChecks": true,
+		"stripInternal": true,
+		"types": [
+			"jasmine"
+		],
+		"lib": [
+			"es2015",
+			"dom"
+		]
 	},
-	"exclude": [
-		"node_modules",
-		"wwwroot",
-		"dist"
+	"include": [
+		"src/**/*",
+		"test/**/*"
 	]
 }

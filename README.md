@@ -5,8 +5,7 @@
 [contribWiki]: ./doc/CONTRIBUTION.md
 [releaseWorkflowWiki]: ./doc/RELEASE-WORKFLOW.md
 
-[jspm]: http://jspm.io
-[typings]: https://github.com/typings/typings
+[npm]: https://www.npmjs.com
 
 # ssv-au-core
 [![Build status](https://ci.appveyor.com/api/projects/status/2e0an5hvxtfs08mf?svg=true)](https://ci.appveyor.com/project/chiko/ssv-au-core)
@@ -26,17 +25,7 @@ In order to contribute please read the [Contribution guidelines][contribWiki].
 
 Get library via [npm]
 ```bash
-npm install ssv-au-core --save
-```
-
-Get library via [jspm]
-```bash
-jspm install ssv-au-core
-```
-
-TypeScript Typings via [typings]
-```bash
-typings install github:sketch7/ssv-au-core --save
+npm install @ssv/au-core --save
 ```
 
 # Usage
@@ -50,22 +39,21 @@ Read more how to use [Logger](./src/logging/README.md).
 ## Setup Machine for Development
 Install/setup the following:
 
-- NodeJS v4+
+- NodeJS v6+
 - Visual Studio Code or similar code editor
-- TypeScript 1.8+
-- SourceTree, SmartGit (or similar)
+- TypeScript 2.0+
+- Git + SourceTree, SmartGit or similar (optional)
 - Ensure to install **global NPM modules** using the following:
 
 
 ```bash
-npm install -g git gulp typings karma-cli jspm
+npm install -g git gulp karma-cli
 ```
 
 
 ### Cloning Repo
 
-- Open SourceTree
-- Clone project repo from [project git][projectGit]
+- Run `git clone https://github.com/sketch7/ssv-au-core.git`
 - Switch to `develop` branch
 
 
@@ -74,7 +62,6 @@ The following process need to be executed in order to get started.
 
 ```bash
 npm install
-jspm install
 ```
 
 
