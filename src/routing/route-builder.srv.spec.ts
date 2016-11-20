@@ -1,4 +1,3 @@
-import "aurelia-polyfills";
 import {RouteBuilder, Route} from "./route-builder.srv";
 import {LogService, ILog} from "../logging/logging";
 
@@ -136,7 +135,7 @@ describe("RouteBuilderSpecs", () => {
 					SUT.map([{
 						key: "undefined-route",
 						model: {
-							route: undefined
+							route: <any>undefined
 						}
 					}]);
 				}).toThrowError();
@@ -161,7 +160,7 @@ describe("RouteBuilderSpecs", () => {
 
 				expect(SUT.get("language")).toBeDefined();
 				expect(SUT.get("language.admin")).toBeDefined();
-				expect(SUT.get("language.admin").parentKey).toBe("language");
+				expect(SUT.get("language.admin")!.parentKey).toBe("language");
 			});
 
 			describe("when the parentKey is specified", () => {
@@ -187,7 +186,7 @@ describe("RouteBuilderSpecs", () => {
 					]);
 
 					expect(SUT.get("language.admin")).toBeDefined();
-					expect(SUT.get("admin.user-groups").parentKey).toBe("language.admin");
+					expect(SUT.get("admin.user-groups")!.parentKey).toBe("language.admin");
 				});
 			});
 		});

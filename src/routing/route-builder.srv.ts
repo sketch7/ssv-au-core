@@ -1,7 +1,7 @@
 import { autoinject } from "aurelia-dependency-injection";
 import { RouteConfig } from "aurelia-router";
 import * as _ from "lodash";
-import { utils } from "ssv-core";
+import { string } from "@ssv/core";
 
 import { LogService, ILog } from "../logging/logging";
 
@@ -95,7 +95,7 @@ export class RouteBuilder {
 
 		if (routeValue.indexOf(":") >= 0) {
 			const routeValueCopy = routeValue;
-			routeValue = utils.string.interpolate(routeValue, data, ":");
+			routeValue = string.interpolate(routeValue, data, ":");
 			if (routeValueCopy === routeValue) {
 				throw new Error(`route params for '${routeValue}' are not interpolated.`);
 			}
@@ -103,7 +103,7 @@ export class RouteBuilder {
 
 		routePath = `/${routeValue}${routePath}`;
 		if (routePath.indexOf("//") >= 0) {
-			routePath = utils.string.replaceAll(routePath, "//", "/");
+			routePath = string.replaceAll(routePath, "//", "/");
 		}
 		if (menuItem.parentKey) {
 			const parentRoute = this.get(menuItem.parentKey);

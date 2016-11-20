@@ -28,6 +28,7 @@
     "@types/lodash": "^4.14.38",
     "aurelia-dependency-injection": "^1.2.0",
     "aurelia-logging": "^1.1.1",
+    "aurelia-polyfills": "^1.1.1",
     "aurelia-router": "^1.0.7",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
