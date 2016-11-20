@@ -1,5 +1,5 @@
+import { getMockLoggerFactory } from "../testing/index";
 import { RouteBuilder, Route } from "./route-builder";
-import { LogService, ILog } from "../logging/index";
 
 const simpleRouteStructure: Route[] = [
 	{
@@ -70,14 +70,10 @@ const complexRouteStructure: Route[] = [
 describe("RouteBuilder", () => {
 
 	let SUT: RouteBuilder;
-	let logging: ILog;
 
 	beforeEach(() => {
-		let logService = jasmine.createSpyObj<LogService>("logService", ["getLogger"]);
-		logging = jasmine.createSpyObj("logging", ["debug", "error", "warn"]);
-		(<jasmine.Spy>logService.getLogger).and.returnValue(logging);
-
-		SUT = new RouteBuilder(logService);
+		const loggerFactory = getMockLoggerFactory();
+		SUT = new RouteBuilder(loggerFactory);
 	});
 
 	describe("mapSpecs", () => {

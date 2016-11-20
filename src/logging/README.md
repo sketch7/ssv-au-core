@@ -1,9 +1,10 @@
 # Logger
+A minimal logger which uses aurelia logger.
 
 ## Usage
 
 ```ts
-import { LogService, ILog } from "@ssv/au-core";
+import { LoggerFactory, ILog } from "@ssv/au-core";
 
 const id = "auth.service";
 
@@ -13,14 +14,14 @@ export class AuthService {
 	private logger: ILog;
 	
 	constructor(
-		logService: LogService
+		loggerFactory: LoggerFactory
 	) {
-		this.logger = logService.getLogger(id);
+		this.logger = loggerFactory.get(id);
 	}
 	
 	login() {
 		this.logger.debug("login", "msg goes here");
 	}
-	
+
 }
 ```

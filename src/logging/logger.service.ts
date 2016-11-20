@@ -1,12 +1,4 @@
-import { getLogger } from "aurelia-logging";
-
-export class LogService {
-
-	getLogger(sourceId: string): ILog {
-		let logger = getLogger(sourceId);
-		return new Log(logger);
-	}
-}
+import { ILog } from "./logging.model";
 
 export class Log implements ILog {
 
@@ -46,11 +38,4 @@ export class Log implements ILog {
 			return `${method}`;
 		}
 	}
-}
-
-export interface ILog {
-	debug(method: string, message?: string, data?: any): void;
-	info(method: string, message?: string, data?: any): void;
-	warn(method: string, message?: string, data?: any): void;
-	error(method: string, message?: string, data?: any): void;
 }

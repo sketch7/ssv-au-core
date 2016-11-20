@@ -3,7 +3,7 @@ import { autoinject } from "aurelia-dependency-injection";
 import { RouteConfig } from "aurelia-router";
 import { string } from "@ssv/core";
 
-import { LogService, ILog } from "../logging/index";
+import { LoggerFactory, ILog } from "../logging/index";
 
 const id = "route-builder.srv";
 
@@ -15,9 +15,9 @@ export class RouteBuilder {
 	private routes: Map<string, Route> = new Map<string, Route>();
 
 	constructor(
-		logService: LogService
+		loggerFactory: LoggerFactory
 	) {
-		this.logger = logService.getLogger(id);
+		this.logger = loggerFactory.get(id);
 		this.logger.debug("ctor");
 	}
 
