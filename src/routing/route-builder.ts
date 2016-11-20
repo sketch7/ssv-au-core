@@ -1,9 +1,9 @@
+import * as _ from "lodash";
 import { autoinject } from "aurelia-dependency-injection";
 import { RouteConfig } from "aurelia-router";
-import * as _ from "lodash";
 import { string } from "@ssv/core";
 
-import { LogService, ILog } from "../logging/logging";
+import { LogService, ILog } from "../logging/index";
 
 const id = "route-builder.srv";
 
@@ -25,7 +25,6 @@ export class RouteBuilder {
 		for (let route of routes) {
 
 			this.validate(route);
-
 			const selectedRoute = this.get(route.key);
 
 			if (selectedRoute) {
@@ -33,7 +32,6 @@ export class RouteBuilder {
 			}
 
 			route.parentKey = this.extractParentKey(route);
-
 			this.routes.set(route.key, route);
 		}
 	}
@@ -58,7 +56,7 @@ export class RouteBuilder {
 	}
 
 	verify(): void {
-		this.routes.forEach((route) => {
+		this.routes.forEach(route => {
 			this.verifyParent(route);
 		});
 	}

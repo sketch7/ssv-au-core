@@ -1,8 +1,7 @@
-import {RouteBuilder, Route} from "./route-builder.srv";
-import {LogService, ILog} from "../logging/logging";
+import { RouteBuilder, Route } from "./route-builder";
+import { LogService, ILog } from "../logging/index";
 
-
-let simpleRouteStructure: Route[] = [
+const simpleRouteStructure: Route[] = [
 	{
 		key: "home",
 		model: {
@@ -36,7 +35,7 @@ let simpleRouteStructure: Route[] = [
 	},
 ];
 
-let complexRouteStructure: Route[] = [
+const complexRouteStructure: Route[] = [
 	{
 		key: "home",
 		model: {
@@ -68,7 +67,7 @@ let complexRouteStructure: Route[] = [
 ];
 
 
-describe("RouteBuilderSpecs", () => {
+describe("RouteBuilder", () => {
 
 	let SUT: RouteBuilder;
 	let logging: ILog;
@@ -82,7 +81,6 @@ describe("RouteBuilderSpecs", () => {
 	});
 
 	describe("mapSpecs", () => {
-
 		it("should add route successfully", () => {
 			SUT.map([
 				{
@@ -95,7 +93,6 @@ describe("RouteBuilderSpecs", () => {
 		});
 
 		describe("given already exists key", () => {
-
 			it("should throw an error", () => {
 				expect(() => {
 					SUT.map([{
@@ -104,18 +101,17 @@ describe("RouteBuilderSpecs", () => {
 							route: "admin"
 						},
 					}, {
-							key: "parent",
-							model: {
-								route: "register"
-							},
-						}
+						key: "parent",
+						model: {
+							route: "register"
+						},
+					}
 					]);
 				}).toThrowError();
 			});
 		});
 
 		describe("given an empty key", () => {
-
 			it("should throw an error", () => {
 				expect(() => {
 					SUT.map([{
@@ -129,7 +125,6 @@ describe("RouteBuilderSpecs", () => {
 		});
 
 		describe("given an undefined route", () => {
-
 			it("should throw an error", () => {
 				expect(() => {
 					SUT.map([{
@@ -143,7 +138,6 @@ describe("RouteBuilderSpecs", () => {
 		});
 
 		describe("given key with dot notation", () => {
-
 			it("should register as parent", () => {
 				SUT.map([{
 					key: "language",
@@ -151,20 +145,19 @@ describe("RouteBuilderSpecs", () => {
 						route: ""
 					}
 				}, {
-						key: "language.admin",
-						model: {
-							route: "/admin"
-						}
+					key: "language.admin",
+					model: {
+						route: "/admin"
 					}
+				}
 				]);
 
 				expect(SUT.get("language")).toBeDefined();
 				expect(SUT.get("language.admin")).toBeDefined();
-				expect(SUT.get("language.admin")!.parentKey).toBe("language");
+				expect(SUT.get("language.admin") !.parentKey).toBe("language");
 			});
 
 			describe("when the parentKey is specified", () => {
-
 				it("should use the parent from the parentKey provided", () => {
 					SUT.map([{
 						key: "language",
@@ -172,21 +165,21 @@ describe("RouteBuilderSpecs", () => {
 							route: ":language"
 						}
 					}, {
-							key: "language.admin",
-							model: {
-								route: "/admin"
-							}
-						}, {
-							key: "admin.user-groups",
-							parentKey: "language.admin",
-							model: {
-								route: "/user-groups"
-							}
+						key: "language.admin",
+						model: {
+							route: "/admin"
 						}
+					}, {
+						key: "admin.user-groups",
+						parentKey: "language.admin",
+						model: {
+							route: "/user-groups"
+						}
+					}
 					]);
 
 					expect(SUT.get("language.admin")).toBeDefined();
-					expect(SUT.get("admin.user-groups")!.parentKey).toBe("language.admin");
+					expect(SUT.get("admin.user-groups") !.parentKey).toBe("language.admin");
 				});
 			});
 		});
@@ -197,7 +190,6 @@ describe("RouteBuilderSpecs", () => {
 	describe("generateUrlSpecs", () => {
 
 		describe("given a non existing route", () => {
-
 			beforeEach(() => {
 				SUT.map(simpleRouteStructure);
 			});
@@ -210,7 +202,6 @@ describe("RouteBuilderSpecs", () => {
 		});
 
 		describe("given a simple structure", () => {
-
 			beforeEach(() => {
 				SUT.map(simpleRouteStructure);
 			});
@@ -221,7 +212,6 @@ describe("RouteBuilderSpecs", () => {
 			});
 
 			describe("when the route is blank", () => {
-
 				it("should be '/'", () => {
 					let result = SUT.generateUrl("home");
 					expect(result).toBe("/");
@@ -229,7 +219,6 @@ describe("RouteBuilderSpecs", () => {
 			});
 
 			describe("when the route is '/'", () => {
-
 				it("should be '/'", () => {
 					let result = SUT.generateUrl("slash");
 					expect(result).toBe("/");
@@ -239,7 +228,6 @@ describe("RouteBuilderSpecs", () => {
 		});
 
 		describe("given route with multiple routes", () => {
-
 			beforeEach(() => {
 				SUT.map(simpleRouteStructure);
 			});
@@ -252,7 +240,6 @@ describe("RouteBuilderSpecs", () => {
 		});
 
 		describe("given a route with param", () => {
-
 			beforeEach(() => {
 				SUT.map(simpleRouteStructure);
 			});
@@ -265,7 +252,6 @@ describe("RouteBuilderSpecs", () => {
 			});
 
 			describe("when the params are not provided", () => {
-
 				it("should throw error", () => {
 					expect(() => SUT.generateUrl("language"))
 						.toThrowError();
@@ -273,7 +259,6 @@ describe("RouteBuilderSpecs", () => {
 			});
 
 			describe("when the params are not provided correctly", () => {
-
 				it("should throw error", () => {
 					expect(() => SUT.generateUrl("language", {
 						langauge: "en"
@@ -284,7 +269,6 @@ describe("RouteBuilderSpecs", () => {
 		});
 
 		describe("given a route with parent", () => {
-
 			beforeEach(() => {
 				SUT.map(complexRouteStructure);
 			});
@@ -295,23 +279,19 @@ describe("RouteBuilderSpecs", () => {
 			});
 
 			describe("when having parent registered with dot", () => {
-
 				it("should generate url with parent", () => {
 					let result = SUT.generateUrl("admin.users");
 					expect(result).toBe("/admin/users");
 				});
-
 			});
 
 			describe("when having a param", () => {
-
 				it("should generate url with parent and param", () => {
 					let result = SUT.generateUrl("user-groups-detail", {
 						userGroup: "core"
 					});
 					expect(result).toBe("/admin/user-groups/core");
 				});
-
 			});
 
 		});
@@ -320,7 +300,6 @@ describe("RouteBuilderSpecs", () => {
 
 	describe("verifySpecs", () => {
 		describe("given all parents are valid", () => {
-
 			beforeEach(() => {
 				SUT.map([{
 					key: "admin",
@@ -328,12 +307,12 @@ describe("RouteBuilderSpecs", () => {
 						route: "admin"
 					},
 				}, {
-						key: "users",
-						parentKey: "admin",
-						model: {
-							route: "register"
-						},
-					}
+					key: "users",
+					parentKey: "admin",
+					model: {
+						route: "register"
+					},
+				}
 				]);
 			});
 
@@ -342,11 +321,9 @@ describe("RouteBuilderSpecs", () => {
 					SUT.verify();
 				});
 			});
-
 		});
 
 		describe("given a parent which doesn't exists", () => {
-
 			beforeEach(() => {
 				SUT.map([{
 					key: "admin",
@@ -354,12 +331,12 @@ describe("RouteBuilderSpecs", () => {
 						route: "admin"
 					},
 				}, {
-						key: "users",
-						parentKey: "admin-invalid",
-						model: {
-							route: "register"
-						},
-					}
+					key: "users",
+					parentKey: "admin-invalid",
+					model: {
+						route: "register"
+					},
+				}
 				]);
 			});
 

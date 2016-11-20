@@ -1,9 +1,9 @@
-# Logger Sample
+# Logger
 
 ## Usage
 
-```javascript
-import {LogService, ILog} from "core/common";
+```ts
+import { LogService, ILog } from "@ssv/au-core";
 
 const id = "auth.service";
 

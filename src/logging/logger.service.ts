@@ -1,5 +1,4 @@
-import {getLogger} from "aurelia-logging";
-
+import { getLogger } from "aurelia-logging";
 
 export class LogService {
 
@@ -11,7 +10,9 @@ export class LogService {
 
 export class Log implements ILog {
 
-	constructor(private logger: any) {
+	constructor(
+		private logger: any
+	) {
 	}
 
 	debug(method: string, message?: string, data?: any): void {

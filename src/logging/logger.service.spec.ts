@@ -1,7 +1,6 @@
-import {LogService} from "./logger.srv";
+import { LogService } from "./logger.service";
 
-
-describe("LogServiceSpecs", () => {
+describe("LogService", () => {
 
 	let SUT = new LogService();
 
