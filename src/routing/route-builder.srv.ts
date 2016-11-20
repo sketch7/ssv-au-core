@@ -1,9 +1,9 @@
-import {autoinject} from "aurelia-dependency-injection";
-import {RouteConfig} from "aurelia-router";
+import { autoinject } from "aurelia-dependency-injection";
+import { RouteConfig } from "aurelia-router";
 import * as _ from "lodash";
-import {utils} from "ssv-core";
+import { utils } from "ssv-core";
 
-import {LogService, ILog} from "../logging/logging";
+import { LogService, ILog } from "../logging/logging";
 
 const id = "route-builder.srv";
 
@@ -38,7 +38,7 @@ export class RouteBuilder {
 		}
 	}
 
-	get(key: string): Route {
+	get(key: string): Route | undefined {
 		return this.routes.get(key);
 	}
 
@@ -48,7 +48,7 @@ export class RouteBuilder {
 		const route = this.get(key);
 
 		if (!route) {
-			throw Error(`generating url for route '${route.key}' not found!`);
+			throw Error(`generating url for route '${key}' not found!`);
 		}
 
 		let routePath = this.buildRoutePath(route, "", data);
@@ -107,13 +107,16 @@ export class RouteBuilder {
 		}
 		if (menuItem.parentKey) {
 			const parentRoute = this.get(menuItem.parentKey);
+			if (!parentRoute) {
+				return routePath;
+			}
 			return this.buildRoutePath(parentRoute, routePath, data);
 		}
 
 		return routePath;
 	}
 
-	private extractParentKey(route: Route): string {
+	private extractParentKey(route: Route): string | undefined {
 		if (!_.isUndefined(route.parentKey)) {
 			return route.parentKey;
 		}
