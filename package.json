@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@ssv/core": "^0.2.0",
+    "@ssv/tools": "^0.2.0",
     "@types/jasmine": "^2.5.37",
     "@types/lodash": "^4.14.38",
     "aurelia-dependency-injection": "^1.2.0",
