@@ -13,24 +13,28 @@
   "scripts": {
     "test": "gulp test",
     "lint": "gulp lint",
-    "build": "gulp build"
+    "build": "gulp build",
+    "bundle": "node_modules/.bin/rollup -c rollup.config.js",
+    "magic-publish": "git checkout master && git pull && git merge develop && git push && gulp publish --rel --bump minor && git checkout develop && git merge master && git push"
   },
   "author": "Stephen Lautier <stephen.lautier@outlook.com>",
   "license": "MIT",
-  "main": "dist/es2015/index.js",
+  "main": "dist/bundles/ssv-au-core.umd.js",
+  "module": "dist/es2015/index.js",
+  "typings": "dist/es2015/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/sketch7/ssv-au-core"
   },
   "devDependencies": {
-    "@ssv/core": "^0.2.0",
-    "@ssv/tools": "^0.2.0",
+    "@ssv/core": "^0.3.0",
+    "@ssv/tools": "^0.3.0",
     "@types/jasmine": "^2.5.37",
     "@types/lodash": "^4.14.38",
     "aurelia-dependency-injection": "^1.2.0",
-    "aurelia-logging": "^1.1.1",
+    "aurelia-logging": "^1.2.0",
     "aurelia-polyfills": "^1.1.1",
-    "aurelia-router": "^1.0.7",
+    "aurelia-router": "^1.1.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-bump": "^2.1.0",
@@ -60,10 +64,10 @@
   },
   "dependencies": {},
   "peerDependencies": {
+    "@ssv/core": "^0.3.0",
     "aurelia-dependency-injection": "^1.0.0",
     "aurelia-logging": "^1.0.0",
     "aurelia-router": "^1.0.0",
     "lodash": "^4.0.0"
-  },
-  "typings": "dist/typings/index.d.ts"
+  }
 }

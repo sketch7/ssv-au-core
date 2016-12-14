@@ -28,9 +28,13 @@ RC release process
 ## New Stable Release
 Stable release process
  - Checkout `master`
+ - Get latest `git pull`
+ - Merge `develop => master`
  - Run `gulp publish --rel --bump major|minor|patch (default: patch)`
  - Merge `master => develop`
 
+Or use the below to automate it. *note* change `gulp publish --rel --bump XXX` to whatever is needed.
+ `npm run magic-publish`
 
 # Gulp Release Commands
 Commands in order to help release easier.

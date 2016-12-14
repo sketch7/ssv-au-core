@@ -12,7 +12,7 @@ module.exports = function (config) {
 			// vendors
 			{ pattern: "node_modules/lodash/**/*.js", included: false, watched: false, served: true },
 			{ pattern: "node_modules/aurelia-*/**/*.js", included: false, watched: false, served: true },
-			{ pattern: "node_modules/@ssv/**/*.js", included: false, watched: false, served: true },
+			{ pattern: "node_modules/@ssv/**/*", included: false, watched: false, served: true },
 
 			{ pattern: conf.src.ts, included: false, watched: true }, // source files
 			{ pattern: conf.test.setup, included: false, watched: true },
