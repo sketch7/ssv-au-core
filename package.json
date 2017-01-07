@@ -67,7 +67,6 @@
     "@ssv/core": "^0.3.0",
     "aurelia-dependency-injection": "^1.0.0",
     "aurelia-logging": "^1.0.0",
-    "aurelia-router": "^1.0.0",
     "lodash": "^4.0.0"
   }
 }

@@ -1,11 +1,8 @@
 import * as _ from "lodash";
 import { autoinject } from "aurelia-dependency-injection";
-import { RouteConfig } from "aurelia-router";
 import { string } from "@ssv/core";
 
 import { LoggerFactory, ILog } from "../logging/index";
-
-const id = "route-builder.srv";
 
 // todo: map (with ...rest) and mapAll
 
@@ -17,7 +14,7 @@ export class RouteBuilder {
 	constructor(
 		loggerFactory: LoggerFactory
 	) {
-		this.logger = loggerFactory.get(id);
+		this.logger = loggerFactory.get("routeBuilder");
 		this.logger.debug("ctor");
 	}
 
@@ -130,7 +127,9 @@ export class RouteBuilder {
 
 export interface Route {
 	key: string;
-	model: RouteConfig;
+	model: {
+		route: string | string[]
+	};
 	parentKey?: string;
 }
 
