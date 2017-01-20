@@ -21,22 +21,22 @@ In order to contribute please read the [Contribution guidelines][contribWiki].
 
 [Change logs][changeLog] | [Project Repository][projectUri] | [Contribution guidelines][contribWiki]
 
-# Installation
+## Installation
 
 Get library via [npm]
 ```bash
 npm install @ssv/au-core --save
 ```
 
-# Usage
+## Usage
 
-## Logger
+### Logger
 Read more how to use [Logger](./src/logging/README.md).
 
 
-# Getting Started
+## Getting Started
 
-## Setup Machine for Development
+### Setup Machine for Development
 Install/setup the following:
 
 - NodeJS v6+
@@ -47,17 +47,17 @@ Install/setup the following:
 
 
 ```bash
-npm install -g git gulp karma-cli
+npm install -g git gulp yarn karma-cli
 ```
 
 
-### Cloning Repo
+#### Cloning Repo
 
 - Run `git clone https://github.com/sketch7/ssv-au-core.git`
 - Switch to `develop` branch
 
 
-## Project Setup
+### Project Setup
 The following process need to be executed in order to get started.
 
 ```bash
@@ -65,37 +65,37 @@ npm install
 ```
 
 
-## Building the code
+### Building the code
 
 ```
 gulp build
 ```
 In order to view all other tasks invoke `gulp` or check the gulp tasks directly.
 
-## Running the tests
+### Running the tests
 
 ```
 gulp test
 ```
 
 
-## Development utils
+### Development utils
 
-### Trigger gulp watch
+#### Trigger gulp watch
 Handles compiling of changes.
 ```
 gulp watch
 ```
 
 
-### Running Continuous Tests
+#### Running Continuous Tests
 Spawns test runner and keep watching for changes.
 ```
 gulp tdd
 ```
 
 
-## Preparation for Release
+### Preparation for Release
 
 ```
 gulp prepare-release --bump major|minor|patch|prerelease (default: patch)
