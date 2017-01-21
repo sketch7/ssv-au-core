@@ -25,11 +25,9 @@ export class RouteHrefAttribute {
 		loggerFactory: LoggerFactory
 	) {
 		this.logger = loggerFactory.get("ssv-route-href");
-		this.logger.debug("ctor");
 	}
 
 	bind() {
-		this.logger.debug("bind", "init", { element: this.element, route: this.route, params: this.params });
 		this.processChange();
 	}
 

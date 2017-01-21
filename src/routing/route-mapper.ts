@@ -13,14 +13,11 @@ export class RouteMapper extends RouteRecognizer {
 	map(routes: any[], parentName = "", parentRoute = ""): void {
 		for (let route of routes as RouteConfig[]) {
 
-			let routeName: string;
 			const routeSettings = route.settings as RouteMapperSettings;
 
-			if (routeSettings.useSpecificName) {
-				routeName = route.name as string;
-			} else {
-				routeName = parentName ? `${parentName}${seperator}${route.name}` : route.name as string;
-			}
+			const routeName = routeSettings.useSpecificName
+				? route.name as string
+				: parentName ? `${parentName}${seperator}${route.name}` : route.name as string;
 
 			let routePath = parentRoute ? `${parentRoute}/${route.route}` : `${route.route}`;
 			if (routePath.indexOf("//") >= 0) {
