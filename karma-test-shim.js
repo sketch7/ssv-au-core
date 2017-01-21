@@ -38,6 +38,8 @@ ssvPackageNames.forEach(pkgName => {
 // aurelia
 const auPackageNames = [
 	"dependency-injection",
+	"route-recognizer",
+	"path",
 	"logging",
 	"metadata",
 	"polyfills",
