@@ -8,14 +8,13 @@ import { RouteMapper } from "./route-mapper";
 @customAttribute("ssv-route-href")
 export class RouteHrefAttribute {
 
-	@bindable({ changeHandler: "processChange" })
+	@bindable({ primaryProperty: true, changeHandler: "processChange" })
 	route: string;
 
 	@bindable({ changeHandler: "processChange" })
-	params: any;
+	params: any | undefined;
 
-	@bindable({ defaultValue: "href" })
-	attribute: string;
+	@bindable() attribute = "href";
 
 	private logger: ILog;
 
@@ -32,7 +31,7 @@ export class RouteHrefAttribute {
 	}
 
 	attributeChanged(value: any, previous: any) {
-		this.logger.debug("attributeChanged", "init", { element: this.element, value: value, previous: previous });
+		if (value) { /*stub*/ }
 		if (previous) {
 			this.element.removeAttribute(previous);
 		}
@@ -41,7 +40,6 @@ export class RouteHrefAttribute {
 	}
 
 	processChange() {
-		this.logger.debug("processChange", "init", { element: this.element, route: this.route, params: this.params });
 		try {
 			const href = this.router.generate(this.route, this.params);
 			this.element.setAttribute(this.attribute, href);
