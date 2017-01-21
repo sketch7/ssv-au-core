@@ -19,11 +19,13 @@ export class RouteMapper {
 	map(routes: RouteConfig[], parentName = "", parentRoute = ""): void {
 		for (let route of routes) {
 
+			const routeValue = typeof route.route === "string" ? route.route : route.route[0];
+
 			const routeName = route.settings && route.settings.useSpecificName
 				? route.name as string
 				: parentName ? `${parentName}${seperator}${route.name}` : route.name as string;
 
-			let routePath = parentRoute ? `${parentRoute}/${route.route}` : `${route.route}`;
+			let routePath = parentRoute ? `${parentRoute}/${routeValue}` : routeValue;
 			if (routePath.indexOf("//") >= 0) {
 				routePath = string.replaceAll(routePath, "//", "/");
 			}
