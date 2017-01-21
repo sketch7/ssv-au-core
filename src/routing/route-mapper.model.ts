@@ -1,8 +1,12 @@
 
 export interface RouteMapperSettings {
 	useSpecificName?: boolean;
+	childRoutes?: RouteConfig[];
+}
 
-	// todo: change back to RouteConfig[]
-	childRoutes?: any;
-
+export interface RouteConfig {
+	route: string | string[];
+	name?: string;
+	caseSensitive?: boolean;
+	settings?: RouteMapperSettings;
 }

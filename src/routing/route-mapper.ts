@@ -1,21 +1,25 @@
 // reference: https://github.com/heruan/aurelia-route-mapper/blob/master/src/route-mapper.ts
 
-import { RouteConfig } from "aurelia-router";
+import { autoinject } from "aurelia-dependency-injection";
 import { RouteRecognizer, ConfigurableRoute } from "aurelia-route-recognizer";
 import { string } from "@ssv/core";
 
-import { RouteMapperSettings } from "./route-mapper.model";
+import { RouteConfig } from "./route-mapper.model";
+
 const seperator = ".";
 
-export class RouteMapper extends RouteRecognizer {
+@autoinject
+export class RouteMapper {
 
-	// todo: change back to RouteConfig[]
-	map(routes: any[], parentName = "", parentRoute = ""): void {
-		for (let route of routes as RouteConfig[]) {
+	constructor(
+		private routeRecognizer: RouteRecognizer
+	) {
+	}
 
-			const routeSettings = route.settings as RouteMapperSettings;
+	map(routes: RouteConfig[], parentName = "", parentRoute = ""): void {
+		for (let route of routes) {
 
-			const routeName = routeSettings.useSpecificName
+			const routeName = route.settings && route.settings.useSpecificName
 				? route.name as string
 				: parentName ? `${parentName}${seperator}${route.name}` : route.name as string;
 
@@ -24,16 +28,20 @@ export class RouteMapper extends RouteRecognizer {
 				routePath = string.replaceAll(routePath, "//", "/");
 			}
 
-			this.add({
+			this.routeRecognizer.add({
 				path: routePath,
 				handler: { name: routeName },
 				caseSensitive: route.caseSensitive === true
 			} as ConfigurableRoute);
 
-			if (routeSettings.childRoutes) {
+			if (route.settings && route.settings.childRoutes) {
 				this.map(route.settings.childRoutes, routeName, routePath);
 			}
 		}
+	}
+
+	generate(name: string, params: Object = {}): string {
+		return this.routeRecognizer.generate(name, params);
 	}
 
 }

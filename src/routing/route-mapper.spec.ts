@@ -1,7 +1,7 @@
 import { RouteConfig } from "aurelia-router";
+import { RouteRecognizer } from "aurelia-route-recognizer";
 
 import { RouteMapper } from "./route-mapper";
-
 
 const secondaryRoutes: RouteConfig[] = [
 	{
@@ -23,7 +23,7 @@ const secondaryRoutes: RouteConfig[] = [
 		title: "Components Detail",
 		name: "component-detail",
 		nav: false,
-		settings: {}
+		settings: { notUsed: true }
 	},
 ];
 
@@ -50,7 +50,7 @@ describe("RouteMapper", () => {
 	let SUT: RouteMapper;
 
 	beforeEach(() => {
-		SUT = new RouteMapper();
+		SUT = new RouteMapper(new RouteRecognizer());
 	});
 
 	describe("mapSpecs", () => {
