@@ -18,7 +18,6 @@ export class RouteHrefAttribute {
 	attribute: string;
 
 	private logger: ILog;
-	private isActive = false;
 
 	constructor(
 		private element: Element,
@@ -31,18 +30,7 @@ export class RouteHrefAttribute {
 
 	bind() {
 		this.logger.debug("bind", "init", { element: this.element, route: this.route, params: this.params });
-		this.isActive = true;
-		// this.processChange();
-	}
-
-	attached() {
-		this.logger.debug("attached", "init", { element: this.element, route: this.route, params: this.params });
 		this.processChange();
-	}
-
-
-	unbind() {
-		this.isActive = false;
 	}
 
 	attributeChanged(value: any, previous: any) {
@@ -56,20 +44,15 @@ export class RouteHrefAttribute {
 
 	processChange() {
 		this.logger.debug("processChange", "init", { element: this.element, route: this.route, params: this.params });
-		const href = this.router.generate(this.route, this.params);
-		this.logger.debug("processChange", "route generated", href);
-		this.element.setAttribute(this.attribute, href);
-		// return this.router.ensureConfigured()
-		// 	.then(() => {
-		// 		if (!this.isActive) {
-		// 			return null;
-		// 		}
-
-		// 		let href = this.router.generate(this.route, this.params);
-		// 		this.element.setAttribute(this.attribute, href);
-		// 		return null;
-		// 	}).catch(reason => {
-		// 		logger.error(reason);
-		// 	});
+		try {
+			const href = this.router.generate(this.route, this.params);
+			this.element.setAttribute(this.attribute, href);
+		} catch (error) {
+			this.logger.error("processChange", "route generated failed", {
+				route: this.route,
+				params: this.params,
+				error
+			});
+		}
 	}
 }

@@ -5,12 +5,9 @@ import { RouteRecognizer, ConfigurableRoute } from "aurelia-route-recognizer";
 
 export class RouteMapper extends RouteRecognizer {
 
-	constructor() {
-		super();
-	}
-
-	map(routes: RouteConfig[], parentName = "", parentRoute = ""): void {
-		routes.forEach(config => {
+	// todo: change back to RouteConfig[]
+	map(routes: any[], parentName = "", parentRoute = ""): void {
+		for (let config of routes as RouteConfig[]) {
 			const name = parentName ? `${parentName}/${config.name}` : config.name;
 			const path = parentRoute + config.route;
 			this.add({
@@ -21,7 +18,7 @@ export class RouteMapper extends RouteRecognizer {
 			if (config.settings && config.settings.childRoutes) {
 				this.map(config.settings.childRoutes, name, path);
 			}
-		});
+		}
 	}
 
 }
