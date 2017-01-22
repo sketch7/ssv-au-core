@@ -38,6 +38,12 @@ ssvPackageNames.forEach(pkgName => {
 // aurelia
 const auPackageNames = [
 	"dependency-injection",
+	"event-aggregator",
+	"framework",
+	"binding",
+	"templating",
+	"loader",
+	"task-queue",
 	"route-recognizer",
 	"path",
 	"logging",
