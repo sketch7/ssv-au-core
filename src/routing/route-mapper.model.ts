@@ -1,4 +1,3 @@
-
 export interface RouteMapperSettings {
 	useSpecificName?: boolean;
 	childRoutes?: RouteConfig[];
