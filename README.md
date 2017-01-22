@@ -11,7 +11,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/2e0an5hvxtfs08mf?svg=true)](https://ci.appveyor.com/project/chiko/ssv-au-core)
 [![Build status](https://ci.appveyor.com/api/projects/status/2e0an5hvxtfs08mf/branch/master?svg=true)](https://ci.appveyor.com/project/chiko/ssv-au-core/branch/master)
 [![bitHound Overall Score](https://www.bithound.io/github/sketch7/ssv-au-core/badges/score.svg)](https://www.bithound.io/github/sketch7/ssv-au-core)
-[![npm version](https://badge.fury.io/js/ssv-au-core.svg)](https://badge.fury.io/js/ssv-au-core)
+[![npm version](https://badge.fury.io/js/%40ssv%2Fau-core.svg)](https://badge.fury.io/js/%40ssv%2Fau-core)
 
 Sketch7 Aurelia core components and utilities
 
