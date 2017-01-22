@@ -7,6 +7,7 @@ export interface RouteMapperSettings {
 export interface RouteConfig {
 	route: string | string[];
 	name?: string;
+	title?: string;
 	caseSensitive?: boolean;
 	settings?: RouteMapperSettings;
 }
