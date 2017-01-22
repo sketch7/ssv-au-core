@@ -3,8 +3,8 @@ import { RouteConfig } from "./route-mapper.model";
 
 const defaultConfig = { settings: { useSpecificName: true } };
 export function setRouteDefaults(route: RouteConfig, specific?: Partial<RouteConfig>) {
-	const defaults = _.defaultsDeep(specific, defaultConfig);
-	route = _.defaultsDeep<Partial<RouteConfig>, RouteConfig>(defaults, route);
+
+	route = _.defaultsDeep<Partial<RouteConfig> | undefined, RouteConfig>(specific, defaultConfig, route);
 
 	if (!route.title) {
 		route.title = typeof route.route === "string"
