@@ -12,7 +12,7 @@ export class RouteHrefAttribute {
 	route: string;
 
 	@bindable({ changeHandler: "processChange" })
-	params: any | undefined;
+	params: Object | undefined;
 
 	@bindable() attribute = "href";
 
