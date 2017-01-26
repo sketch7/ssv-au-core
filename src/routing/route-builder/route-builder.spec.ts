@@ -1,4 +1,4 @@
-import { getMockLoggerFactory } from "../testing/index";
+import { getMockLoggerFactory } from "../../testing/index";
 import { RouteBuilder, Route } from "./route-builder";
 
 const simpleRouteStructure: Route[] = [

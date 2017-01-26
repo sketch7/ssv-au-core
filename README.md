@@ -28,10 +28,40 @@ Get library via [npm]
 npm install @ssv/au-core --save
 ```
 
-## Usage
+### Setup Plugin
 
-### Logger
-Read more how to use [Logger](./src/logging/README.md).
+Register `au-core` plugin with optional global configuration.
+
+```ts
+// register plugin with aurelia
+aurelia.use.plugin("@ssv/au-core");
+```
+## Global Configuration
+Global configuration is available for:
+| Feature/Component  | Type              | Docs                       |
+|--------------------|-------------------|----------------------------|
+| route-active       | Attribute         | [read me][routeactive]     |
+
+## Features
+
+| Feature          | Status           | Docs               | Issue          |
+|------------------|------------------|--------------------|----------------|
+| logger           |             Done | [read me][logger]  | -              |
+| location         |             Done |                    | -              |
+| store            |             Done |                    | -              |
+| route mapper     |             Done |                    | -              |
+
+## Components
+
+| Components       | Type              | Status          | Docs                       | Issue          |
+|------------------|-------------------|-----------------|----------------------------|----------------|
+| route-href       | Attribute         |            Done | [read me][routehref]       | -              |
+| route-active     | Attribute         |            Done | [read me][routeactive]     | -              |
+
+
+[logger]: ./src/logging/README.md
+[routehref]: ./src/routing/route-href/README.md
+[routeactive]: ./src/routing/route-active/README.md
 
 
 ## Getting Started

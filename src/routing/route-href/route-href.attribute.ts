@@ -1,8 +1,8 @@
 import { autoinject } from "aurelia-dependency-injection";
 import { bindable, customAttribute } from "aurelia-templating";
 
-import { LoggerFactory, ILog } from "../logging/index";
-import { RouteMapper } from "./route-mapper";
+import { LoggerFactory, ILog } from "../../logging/index";
+import { RouteMapper } from "../route-mapper";
 
 @autoinject
 @customAttribute("ssv-route-href")

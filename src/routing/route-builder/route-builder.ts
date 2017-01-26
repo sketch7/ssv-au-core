@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import { autoinject } from "aurelia-dependency-injection";
 import { string } from "@ssv/core";
 
-import { LoggerFactory, ILog } from "../logging/index";
+import { LoggerFactory, ILog } from "../../logging/index";
 
 // todo: map (with ...rest) and mapAll
 
