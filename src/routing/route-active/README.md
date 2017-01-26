@@ -2,16 +2,14 @@
 [routehref]: ../route-href/README.md
 
 # Route Active
-Compares the passed route with the actual current route location and toggle's `css class` accordingly.
-Works great with [route-href][routehref] attribute.
+Adds a CSS class to an element when the link's route becomes active.
+Can be used in conjuction with [route-href][routehref] attribute.
 
 ## Prerequisites
-[Route Mapper][routemapper] is required to eager loading whole route hierarchy.
+[Route Mapper][routemapper] is required to eager load all route hierarchy.
 
 ## Global Configuration
-During plugin registry optional global configuration can be passed.
-
-Available configuration for `routeActive` are:
+Options which can be configured globally.
 
  Name           | Type        | Default |
 |---------------|-------------|---------|
@@ -19,59 +17,33 @@ Available configuration for `routeActive` are:
 | attribute     | string      | href    |
 | matchExact    | boolean     | false   |
 
-
-```ts
-import { CoreConfig } from "@ssv/au-core";
-
-export function configure(aurelia: Aurelia) {
-
-     // configure global configuration (optional)
-	const coreGlobalConfig: CoreConfig = {
-		routeActive: { activeClass: "selected" }
-	};
-
-	aurelia.use
-		.standardConfiguration()
-		...
-		.plugin("@ssv/au-core", coreGlobalConfig);
-}
-```
-
 ## Usage
 
-Simple usage
-```ts
-<a href="..." ssv-route-active >my route</a>
-```
-
-Simple usage with overriding current active class value.
-```ts
-<a href="..." ssv-route-active="selected" >my route</a>
-```
-
-Overriding active class and usage on different element.
 ```html
-<ul>
-	<li repeat.for="route of routes" ssv-route-active="active-class: selected; route.bind: route.routeName; params.bind: route.params">
-		<a ssv-route-href="route.bind: route.routeName; params.bind: route.params">${route.label}</a>
-	</li>
-</ul>
-```
+<a href="..." ssv-route-active>my route</a>
 
+<!-- primary binding - sets the active class name -->
+<a href="..." ssv-route-active="selected" >my route</a>
+
+<!-- using route + params, on different element -->
+<li ssv-route-active="route: hero; params.bind: {hero: 'rexxar'}"></li>
+
+<!-- using url, on different element -->
+<li ssv-route-active="url: /en/heroes"></li>
+
+<!-- passing other options -->
+<a ssv-route-active="active-class: selected; match-exact: true"></a>
+```
 
 ### Parameters
 
-One of the below Parameters is required
-- Url
-- Route (with optional params)
-- attribute: this attributed used directly on `anchor` link.
+| Name        | Type    | Default | Required | Description                                                                   |
+|-------------|---------|---------|----------|-------------------------------------------------------------------------------|
+| url         | string  |         | no*      | url to match with the current url. Cannot be used in conjunction with `route` |
+| route       | string  |         | no*      | route name to match. Cannot be used in conjunction with `url`                 |
+| params      | string  |         | no       | params for the `route`. Only used when using the `route`                      |
+| activeClass | string  | active  | no       | css class which gets added when its active                                    |
+| attribute   | string  | href    | no       | attribute to be used to read url from                                         |
+| matchExact  | boolean | false   | no       | determines whether the full url should match or partially                     |
 
-| Name          | Type        | Default | Usage    | Description                                                      |
-|---------------|-------------|---------|----------|------------------------------------------------------------------|
-| url           | string      |         | required | actual url need to be passed                                     |
-| route         | string      |         | required | route name with optional route                                   |
-| params        | string      |         | optional |                                                                  |
-| activeClass   | string      | active  | optional |                                                                  |
-| attribute     | string      | href    | optional |                                                                  |
-| matchExact    | boolean     | false   | optional | if contains all the passed uri or it need's to match exactly     |
-
+*no**: *required when the attribute isn't provided, such as `href`*
