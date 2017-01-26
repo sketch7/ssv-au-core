@@ -33,7 +33,7 @@ describe("Store", () => {
 
 		describe("when trying to retreive data", () => {
 			it("should return data from the state", () => {
-				let result = SUT.get<HeroState>("hero");
+				let result = SUT.get("hero");
 				expect(result.name).toBe("Vegeta");
 			});
 
@@ -44,11 +44,11 @@ describe("Store", () => {
 
 			it("should subscribe and receive updates", () => {
 				const callback = jasmine.createSpy("callback");
-				SUT.subscribe<HeroState>("hero", callback);
+				SUT.subscribe("hero", callback);
 
 				expect(callback).toHaveBeenCalledWith(jasmine.objectContaining({ name: "Vegeta", strength: 19 }));
 
-				SUT.set<HeroState>("hero", { name: "Freeza", strength: 2 });
+				SUT.set("hero", { name: "Freeza", strength: 2 });
 
 				expect(callback).toHaveBeenCalledTimes(2);
 				expect(callback).toHaveBeenCalledWith(jasmine.objectContaining({ name: "Freeza", strength: 2 }));
@@ -57,8 +57,8 @@ describe("Store", () => {
 
 		describe("when trying to save data within the store", () => {
 			it("should save successfully", () => {
-				SUT.set<HeroState>("hero", { name: "Freeza", strength: 12 });
-				let result = SUT.get<HeroState>("hero");
+				SUT.set("hero", { name: "Freeza", strength: 12 });
+				let result = SUT.get("hero");
 				expect(result.name).toBe("Freeza");
 			});
 		});
