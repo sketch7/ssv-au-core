@@ -19,6 +19,9 @@ export class LocationService {
 		};
 	}
 
+	/**
+	 * Gets the path/url e.g. `/en/heroes`.
+	 */
 	getPathName(): string {
 		return window.location.pathname;
 	}
