@@ -1,24 +1,26 @@
 [routemapper]: ../README.md
 
 # Route Href
- Generates any route which is available in the whole route hierarchy.
+ Generates url for the route specified.
 
 ## Prerequisites
-[Route Mapper][routemapper] is required to eager loading whole route hierarchy.
+[Route Mapper][routemapper] is required to eager load all route hierarchy.
 
 ## Usage
 
 ```html
-<ul>
-	<li repeat.for="route of routes">
-		<a ssv-route-href="route.bind: route.routeName; params.bind: route.params">${route.label}</a>
-	</li>
-</ul>
+<!-- route + params -->
+<a ssv-route-href="route: hero; params.bind: {hero: 'rexxar'}">Rexxar</a>
+
+<!-- usage with router -->
+<li repeat.for="route of routes">
+    <a ssv-route-href="route.bind: route.routeName; params.bind: route.params">${route.label}</a>
+</li>
 ```
 
 ### Parameters
-| Name          | Type        | Default | Usage    | Description                      |
-|---------------|-------------|---------|----------|----------------------------------|
-| route         | string      |         | required |                                  |
-| params        | string      |         | optional |                                  |
-| attribute     | string      | href    | optional |                                  |
+| Name      | Type   | Default | Required | Description                             |
+|-----------|--------|---------|----------|-----------------------------------------|
+| route     | string |         | yes      | route name to generate url for          |
+| params    | string |         | no       | params required for the specified route |
+| attribute | string | href    | no       | attribute to use to set url in          |
