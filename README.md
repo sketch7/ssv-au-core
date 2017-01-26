@@ -33,14 +33,15 @@ npm install @ssv/au-core --save
 Register `au-core` plugin with optional global configuration.
 
 ```ts
-// register plugin with aurelia
-aurelia.use.plugin("@ssv/au-core");
+import { CoreConfig } from "@ssv/au-core";
+
+const config: CoreConfig = {
+    routeActive: { activeClass: "selected" }
+};
+// register plugin with aurelia + configure
+aurelia.use.plugin("@ssv/au-core", config);
 ```
-## Global Configuration
-Global configuration is available for:
-| Feature/Component  | Type              | Docs                       |
-|--------------------|-------------------|----------------------------|
-| route-active       | Attribute         | [read me][routeactive]     |
+
 
 ## Features
 
