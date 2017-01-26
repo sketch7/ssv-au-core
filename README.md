@@ -42,7 +42,6 @@ const config: CoreConfig = {
 aurelia.use.plugin("@ssv/au-core", config);
 ```
 
-
 ## Features
 
 | Feature          | Status           | Docs               | Issue          |
@@ -58,7 +57,6 @@ aurelia.use.plugin("@ssv/au-core", config);
 |------------------|-------------------|-----------------|----------------------------|----------------|
 | route-href       | Attribute         |            Done | [read me][routehref]       | -              |
 | route-active     | Attribute         |            Done | [read me][routeactive]     | -              |
-
 
 [logger]: ./src/logging/README.md
 [routehref]: ./src/routing/route-href/README.md
