@@ -11,8 +11,10 @@ export * from "./core.config";
 
 export function configure(frameworkConfig: FrameworkConfiguration, config: CoreConfig) {
 	frameworkConfig.singleton(RouteMapper);
-	frameworkConfig.globalResources("./routing/route-active.attribute");
-	frameworkConfig.globalResources("./routing/route-href.attribute");
+	frameworkConfig.globalResources([
+		"./routing/route-active/route-active.attribute",
+		"./routing/route-href/route-href.attribute"
+	]);
 
 	frameworkConfig.container.registerInstance(RouteActiveConfig, Object.assign(RouteActiveConfig.defaults, config.routeActive));
 }
