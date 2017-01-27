@@ -4,7 +4,7 @@ Store holds the whole state tree of your application.
 ## Usage
 
 ```ts
-// sample state
+// sample application state
 interface AppState {
     hero: HeroState;
 }
@@ -15,7 +15,7 @@ interface HeroState {
 ```
 
 ```ts
-//inject state
+//inject store
 constructor(
     private store: Store<AppState>
 ) {
