@@ -1,5 +1,15 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/sketch7/ssv-au-core/compare/0.3.0...v0.3.1) (2017-01-27)
+
+
+### Bug Fixes
+
+* **routing:** fixed attributes global resources path ([15834a2](https://github.com/sketch7/ssv-au-core/commit/15834a2))
+
+
+
 <a name="0.3.0"></a>
-# [0.3.0](https://github.com/sketch7/ssv-au-core/compare/0.2.0...v0.3.0) (2017-01-27)
+# [0.3.0](https://github.com/sketch7/ssv-au-core/compare/0.2.0...0.3.0) (2017-01-27)
 
 
 ### Features
