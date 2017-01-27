@@ -44,12 +44,12 @@ aurelia.use.plugin("@ssv/au-core", config);
 
 ## Features
 
-| Feature          | Status           | Docs               | Issue          |
-|------------------|------------------|--------------------|----------------|
-| logger           |             Done | [read me][logger]  | -              |
-| location         |             Done |                    | -              |
-| store            |             Done |                    | -              |
-| route mapper     |             Done |                    | -              |
+| Feature          | Status           | Docs                    | Issue          |
+|------------------|------------------|-------------------------|----------------|
+| logger           |             Done | [read me][logger]       | -              |
+| location         |             Done |                         | -              |
+| store            |             Done | [read me][store]        | -              |
+| route mapper     |             Done | [read me][routemapper]  | -              |
 
 ## Components
 
@@ -59,6 +59,8 @@ aurelia.use.plugin("@ssv/au-core", config);
 | route-active     | Attribute         |            Done | [read me][routeactive]     | -              |
 
 [logger]: ./src/logging/README.md
+[store]: ./src/store/README.md
+[routemapper]: ./src/routing/README.md
 [routehref]: ./src/routing/route-href/README.md
 [routeactive]: ./src/routing/route-active/README.md
 

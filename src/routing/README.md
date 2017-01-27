@@ -4,27 +4,27 @@ Route mapper eager load all aurelia route hierarchy. This needs to be combined w
 ## Usage
 ```ts
 // Enabling specific route name
-    {
-        route: "components",
-        title: "Components",
-        name: "components",
-        moduleId: `app/components/component-layout`,
-        nav: true,
-        settings: { useSpecificName: true }
-    }
+{
+    route: "components",
+    title: "Components",
+    name: "components",
+    moduleId: `app/components/component-layout`,
+    nav: true,
+    settings: { useSpecificName: true }
+}
 
 // Associating childRoutes to a parent route.
-    {
-        route: "components",
-        title: "Components",
-        name: "components",
-        moduleId: `app/components/component-layout`,
-        nav: true,
-        settings: { childRoutes: componentRoutes }
-    }
+{
+    route: "components",
+    title: "Components",
+    name: "components",
+    moduleId: `app/components/component-layout`,
+    nav: true,
+    settings: { childRoutes: componentRoutes }
+}
 ```
 ## Parameters
-Parameters need to be set within `route` `setting` sections.
+Parameters need to be set within `route settings` property.
 
 | Name            | Type          | Default | Required | Description                                                                                                                    |
 |-----------------|---------------|---------|----------|--------------------------------------------------------------------------------------------------------------------------------|
@@ -32,10 +32,20 @@ Parameters need to be set within `route` `setting` sections.
 | childRoutes     | RouteConfig[] |         | no*      | child routes for the current route.                                                                                            |
 
 *no**: *required when the `route` has `childRoutes`.
+ 
+***
+ 
 
+# Utils
 
-## Utils
-`setRouteDefaults`: Accepts two parameters an object of `RouteConfig` and an optional parameter `specific configuration`.
+### Method:  `setRouteDefaults`
+
+#### Parameters:
+
+| Name     | Type                 | Default                                 | Required | Description                                                       |
+|----------|----------------------|-----------------------------------------|----------|-------------------------------------------------------------------|
+| route    | RouteConfig          |                                         | yes      |                                                                   |
+| specific | Partial<RouteConfig> | { settings: { useSpecificName: true } } | no       | specific configuration which will overrides current configuration |
 
 ```ts
 import { setRouteDefaults } from "@ssv/au-core";
