@@ -19,7 +19,7 @@ export class Store<TAppState> {
 		this.state = state;
 	}
 
-	set<K extends keyof TAppState>(stateName: K, partialState: Partial<TAppState[K]>): void {
+	set<TState extends keyof TAppState>(stateName: TState, partialState: Partial<TAppState[TState]>): void {
 		this.state = Object.assign({}, this.state, { [stateName as string]: partialState });
 		this.eventAggregator.publish(`${stateChanged}${stateName}`, this.get(stateName));
 	}
@@ -28,13 +28,13 @@ export class Store<TAppState> {
 		return this.state;
 	}
 
-	get<K extends keyof TAppState>(stateName: K): TAppState[K] {
-		return _.get<TAppState[K]>(_.pick(this.state, stateName), stateName) as TAppState[K];
+	get<TState extends keyof TAppState>(stateName: TState): TAppState[TState] {
+		return _.get<TAppState[TState]>(_.pick(this.state, stateName), stateName) as TAppState[TState];
 	}
 
-	subscribe<K extends keyof TAppState>(stateName: K, callback: (state: TAppState[K]) => void): Subscription {
+	subscribe<TState extends keyof TAppState>(stateName: TState, callback: (state: TAppState[TState]) => void): Subscription {
 		callback(this.get(stateName));
-		return this.eventAggregator.subscribe(`${stateChanged}${stateName}`, (state: TAppState[K]) => callback(state));
+		return this.eventAggregator.subscribe(`${stateChanged}${stateName}`, (state: TAppState[TState]) => callback(state));
 	}
 
 }
