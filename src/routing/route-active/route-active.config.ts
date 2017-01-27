@@ -3,7 +3,7 @@ export class RouteActiveConfig {
 
 	activeClass = "active";
 	attribute = "href";
-	matchExact = false;
+	matchExact = true;
 }
 
 export interface RouteActiveConfigOptions {

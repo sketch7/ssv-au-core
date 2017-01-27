@@ -15,7 +15,7 @@ Options which can be configured globally.
 |---------------|-------------|---------|
 | activeClass   | string      | active  |
 | attribute     | string      | href    |
-| matchExact    | boolean     | false   |
+| matchExact    | boolean     | true    |
 
 ## Usage
 
@@ -32,7 +32,7 @@ Options which can be configured globally.
 <li ssv-route-active="url: /en/heroes"></li>
 
 <!-- passing other options -->
-<a ssv-route-active="active-class: selected; match-exact: true"></a>
+<a ssv-route-active="active-class: selected; match-exact: false"></a>
 ```
 
 ### Parameters
@@ -44,6 +44,6 @@ Options which can be configured globally.
 | params      | string  |         | no       | params for the `route`. Only used when using the `route`                      |
 | activeClass | string  | active  | no       | css class which gets added when its active                                    |
 | attribute   | string  | href    | no       | attribute to be used to read url from                                         |
-| matchExact  | boolean | false   | no       | determines whether the full url should match or partially                     |
+| matchExact  | boolean | true    | no       | determines whether the full url should match or partially                     |
 
 *no**: *required when the attribute isn't provided, such as `href`*

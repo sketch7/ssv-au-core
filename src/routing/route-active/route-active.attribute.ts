@@ -59,7 +59,7 @@ export class RouteActiveAttribute {
 		}
 
 		const currentPath = this.service.getPathName();
-		const isMatch = this.matchExact
+		const isMatch = this.config.matchExact
 			? currentPath === link
 			: !_.includes(currentPath, link);
 
