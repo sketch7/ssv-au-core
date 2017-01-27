@@ -1,5 +1,17 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/sketch7/ssv-au-core/compare/0.2.0...v0.3.0) (2017-01-27)
+
+
+### Features
+
+* **route-active:** added ssv-route-active attribute ([a50cf6f](https://github.com/sketch7/ssv-au-core/commit/a50cf6f))
+* **store:** Added store feature ([1489943](https://github.com/sketch7/ssv-au-core/commit/1489943))
+* **store:** types has been changed to be strict and auto inferred ([fc01c50](https://github.com/sketch7/ssv-au-core/commit/fc01c50))
+
+
+
 <a name="0.2.0"></a>
-# [0.2.0](https://github.com/sketch7/ssv-au-core/compare/0.1.2...v0.2.0) (2017-01-22)
+# [0.2.0](https://github.com/sketch7/ssv-au-core/compare/0.1.2...0.2.0) (2017-01-22)
 
 
 ### Features
