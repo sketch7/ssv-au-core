@@ -72,7 +72,6 @@ export class RouteActiveAttribute {
 	}
 
 	private setDefaults(): void {
-		this.logger.warn("setDefaults", "init", this.defaults);
 		this.config = _.defaults<RouteActiveConfig>({
 			activeClass: this.activeClass,
 			attribute: this.attribute
