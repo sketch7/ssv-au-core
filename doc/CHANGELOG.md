@@ -1,5 +1,15 @@
+<a name="0.3.3"></a>
+## [0.3.3](https://github.com/sketch7/ssv-au-core/compare/0.3.2...v0.3.3) (2017-01-28)
+
+
+### Bug Fixes
+
+* **package:** fixed devDependencies and peerDependencies ([466f32f](https://github.com/sketch7/ssv-au-core/commit/466f32f))
+
+
+
 <a name="0.3.2"></a>
-## [0.3.2](https://github.com/sketch7/ssv-au-core/compare/0.3.1...v0.3.2) (2017-01-28)
+## [0.3.2](https://github.com/sketch7/ssv-au-core/compare/0.3.1...0.3.2) (2017-01-28)
 
 
 ### Bug Fixes
