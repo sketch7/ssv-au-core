@@ -1,5 +1,15 @@
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/sketch7/ssv-au-core/compare/0.3.1...v0.3.2) (2017-01-28)
+
+
+### Bug Fixes
+
+* **route-active:** fixed minor issue with default configuration ([8cdccc0](https://github.com/sketch7/ssv-au-core/commit/8cdccc0))
+
+
+
 <a name="0.3.1"></a>
-## [0.3.1](https://github.com/sketch7/ssv-au-core/compare/0.3.0...v0.3.1) (2017-01-27)
+## [0.3.1](https://github.com/sketch7/ssv-au-core/compare/0.3.0...0.3.1) (2017-01-27)
 
 
 ### Bug Fixes
