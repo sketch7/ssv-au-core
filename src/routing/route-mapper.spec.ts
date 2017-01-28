@@ -1,7 +1,7 @@
-import { RouteConfig } from "aurelia-router";
 import { RouteRecognizer } from "aurelia-route-recognizer";
 
 import { RouteMapper } from "./route-mapper";
+import { RouteConfig } from "./route-mapper.model";
 
 const secondaryRoutes: RouteConfig[] = [
 	{
@@ -23,7 +23,7 @@ const secondaryRoutes: RouteConfig[] = [
 		title: "Components Detail",
 		name: "component-detail",
 		nav: false,
-		settings: { notUsed: true }
+		settings: { notUsed: true } as any
 	},
 ];
 

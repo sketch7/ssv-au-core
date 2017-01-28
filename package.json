@@ -32,10 +32,11 @@
     "@types/jasmine": "^2.5.37",
     "@types/lodash": "^4.14.38",
     "aurelia-dependency-injection": "^1.2.0",
+    "aurelia-event-aggregator": "^1.0.1",
     "aurelia-framework": "^1.0.8",
     "aurelia-logging": "^1.2.0",
     "aurelia-polyfills": "^1.1.1",
-    "aurelia-router": "^1.1.1",
+    "aurelia-route-recognizer": "^1.1.0",
     "aurelia-templating": "^1.2.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
@@ -67,11 +68,13 @@
   "dependencies": {},
   "peerDependencies": {
     "@ssv/core": "^0.3.0",
-    "aurelia-dependency-injection": "^1.0.0",
-    "aurelia-framework": "^1.0.0",
-    "aurelia-logging": "^1.0.0",
-    "aurelia-router": "^1.0.0",
-    "aurelia-templating": "^1.0.0",
+    "aurelia-dependency-injection": "^1.2.0",
+    "aurelia-event-aggregator": "^1.0.1",
+    "aurelia-framework": "^1.0.8",
+    "aurelia-logging": "^1.2.0",
+    "aurelia-polyfills": "^1.1.1",
+    "aurelia-route-recognizer": "^1.1.0",
+    "aurelia-templating": "^1.2.0",
     "lodash": "^4.0.0"
   }
 }
