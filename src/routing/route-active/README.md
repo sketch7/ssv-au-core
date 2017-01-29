@@ -8,15 +8,6 @@ Can be used in conjuction with [route-href][routehref] attribute.
 ## Prerequisites
 [Route Mapper][routemapper] is required to eager load all route hierarchy.
 
-## Global Configuration
-Options which can be configured globally.
-
- Name           | Type        | Default |
-|---------------|-------------|---------|
-| activeClass   | string      | active  |
-| attribute     | string      | href    |
-| matchExact    | boolean     | true    |
-
 ## Usage
 
 ```html
@@ -47,3 +38,12 @@ Options which can be configured globally.
 | matchExact  | boolean | true    | no       | determines whether the full url should match or partially                     |
 
 *no**: *required when the attribute isn't provided, such as `href`*
+
+## Global Configuration
+Options which can be configured globally.
+
+ Name           | Type        | Default |
+|---------------|-------------|---------|
+| activeClass   | string      | active  |
+| attribute     | string      | href    |
+| matchExact    | boolean     | true    |

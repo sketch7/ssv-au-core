@@ -1,13 +1,11 @@
-export class RouteActiveConfig {
-	static defaults = new RouteActiveConfig();
+export const routeActiveConfig: RouteActiveConfig = {
+	activeClass: "active",
+	attribute: "href",
+	matchExact: true
+};
 
-	activeClass = "active";
-	attribute = "href";
-	matchExact = true;
-}
-
-export interface RouteActiveConfigOptions {
-	activeClass?: string;
-	attribute?: string;
-	matchExact?: boolean;
+export interface RouteActiveConfig {
+	activeClass: string;
+	attribute: string;
+	matchExact: boolean;
 }
