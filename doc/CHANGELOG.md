@@ -1,5 +1,10 @@
+<a name="0.3.5"></a>
+## [0.3.5](https://github.com/sketch7/ssv-au-core/compare/0.3.4...v0.3.5) (2017-01-29)
+
+
+
 <a name="0.3.4"></a>
-## [0.3.4](https://github.com/sketch7/ssv-au-core/compare/0.3.3...v0.3.4) (2017-01-29)
+## [0.3.4](https://github.com/sketch7/ssv-au-core/compare/0.3.3...0.3.4) (2017-01-29)
 
 
 
