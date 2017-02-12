@@ -1,5 +1,15 @@
+<a name="0.3.6"></a>
+## [0.3.6](https://github.com/sketch7/ssv-au-core/compare/0.3.5...v0.3.6) (2017-02-12)
+
+
+### Features
+
+* **packages:** changed dependencies from `peerDependencies` to `dependencies` ([9e0ae59](https://github.com/sketch7/ssv-au-core/commit/9e0ae59))
+
+
+
 <a name="0.3.5"></a>
-## [0.3.5](https://github.com/sketch7/ssv-au-core/compare/0.3.4...v0.3.5) (2017-01-29)
+## [0.3.5](https://github.com/sketch7/ssv-au-core/compare/0.3.4...0.3.5) (2017-01-29)
 
 
 
