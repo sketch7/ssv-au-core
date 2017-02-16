@@ -30,8 +30,7 @@ export class RouteHrefAttribute {
 		this.processChange();
 	}
 
-	attributeChanged(value: any, previous: any) {
-		if (value) { /*stub*/ }
+	attributeChanged(_value: any, previous: any) {
 		if (previous) {
 			this.element.removeAttribute(previous);
 		}
