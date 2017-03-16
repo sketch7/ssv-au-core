@@ -1,5 +1,15 @@
+<a name="0.3.7"></a>
+## [0.3.7](https://github.com/sketch7/ssv-au-core/compare/0.3.6...v0.3.7) (2017-03-16)
+
+
+### Features
+
+* **observable:** added `PropertyObserver<T>` to have subscribe values typed correctly instead of any ([c046c5d](https://github.com/sketch7/ssv-au-core/commit/c046c5d))
+
+
+
 <a name="0.3.6"></a>
-## [0.3.6](https://github.com/sketch7/ssv-au-core/compare/0.3.5...v0.3.6) (2017-02-12)
+## [0.3.6](https://github.com/sketch7/ssv-au-core/compare/0.3.5...0.3.6) (2017-02-12)
 
 
 ### Features
