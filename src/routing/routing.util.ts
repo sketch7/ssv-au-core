@@ -13,4 +13,4 @@ export function setRouteDefaults(route: RouteConfig, specific?: Partial<RouteCon
 	}
 
 	return route;
-};
+}

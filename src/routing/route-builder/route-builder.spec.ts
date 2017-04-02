@@ -126,7 +126,7 @@ describe("RouteBuilder", () => {
 					SUT.map([{
 						key: "undefined-route",
 						model: {
-							route: <any>undefined
+							route: undefined as any
 						}
 					}]);
 				}).toThrowError();
@@ -203,20 +203,20 @@ describe("RouteBuilder", () => {
 			});
 
 			it("should generate url from route correctly", () => {
-				let result = SUT.generateUrl("profile");
+				const result = SUT.generateUrl("profile");
 				expect(result).toBe("/user");
 			});
 
 			describe("when the route is blank", () => {
 				it("should be '/'", () => {
-					let result = SUT.generateUrl("home");
+					const result = SUT.generateUrl("home");
 					expect(result).toBe("/");
 				});
 			});
 
 			describe("when the route is '/'", () => {
 				it("should be '/'", () => {
-					let result = SUT.generateUrl("slash");
+					const result = SUT.generateUrl("slash");
 					expect(result).toBe("/");
 				});
 			});
@@ -229,7 +229,7 @@ describe("RouteBuilder", () => {
 			});
 
 			it("should generate url from first index", () => {
-				let result = SUT.generateUrl("multi-route");
+				const result = SUT.generateUrl("multi-route");
 				expect(result).toBe("/");
 			});
 
@@ -241,7 +241,7 @@ describe("RouteBuilder", () => {
 			});
 
 			it("should generate url with data interpolated", () => {
-				let result = SUT.generateUrl("language", {
+				const result = SUT.generateUrl("language", {
 					language: "en"
 				});
 				expect(result).toBe("/en");
@@ -270,20 +270,20 @@ describe("RouteBuilder", () => {
 			});
 
 			it("should generate url with parent", () => {
-				let result = SUT.generateUrl("user-groups");
+				const result = SUT.generateUrl("user-groups");
 				expect(result).toBe("/admin/user-groups");
 			});
 
 			describe("when having parent registered with dot", () => {
 				it("should generate url with parent", () => {
-					let result = SUT.generateUrl("admin.users");
+					const result = SUT.generateUrl("admin.users");
 					expect(result).toBe("/admin/users");
 				});
 			});
 
 			describe("when having a param", () => {
 				it("should generate url with parent and param", () => {
-					let result = SUT.generateUrl("user-groups-detail", {
+					const result = SUT.generateUrl("user-groups-detail", {
 						userGroup: "core"
 					});
 					expect(result).toBe("/admin/user-groups/core");

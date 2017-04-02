@@ -33,12 +33,12 @@ describe("Store", () => {
 
 		describe("when trying to retreive data", () => {
 			it("should return data from the state", () => {
-				let result = SUT.get("hero");
+				const result = SUT.get("hero");
 				expect(result.name).toBe("Vegeta");
 			});
 
 			it("should return all the state", () => {
-				let result = SUT.getState();
+				const result = SUT.getState();
 				expect(result.hero.name).toBe("Vegeta");
 			});
 
@@ -58,7 +58,7 @@ describe("Store", () => {
 		describe("when trying to save data within the store", () => {
 			it("should save successfully", () => {
 				SUT.set("hero", { name: "Freeza", strength: 12 });
-				let result = SUT.get("hero");
+				const result = SUT.get("hero");
 				expect(result.name).toBe("Freeza");
 			});
 		});

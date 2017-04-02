@@ -17,7 +17,7 @@ export class RouteMapper {
 	}
 
 	map(routes: RouteConfig[], parentName = "", parentRoute = ""): void {
-		for (let route of routes) {
+		for (const route of routes) {
 
 			const routeValue = typeof route.route === "string" ? route.route : route.route[0];
 

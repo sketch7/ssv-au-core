@@ -34,7 +34,7 @@ export class Store<TAppState> {
 
 	subscribe<TStateKey extends keyof TAppState>(key: TStateKey, callback: (state: TAppState[TStateKey]) => void): Subscription {
 		callback(this.get(key));
-		return this.eventAggregator.subscribe(`${stateChanged}${key}`, (state: TAppState[TStateKey]) => callback(state));
+		return this.eventAggregator.subscribe(`${stateChanged}${key}`, (state: TAppState[TStateKey], _event: string) => callback(state));
 	}
 
 }

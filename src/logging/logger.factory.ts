@@ -6,7 +6,7 @@ import { Log } from "./logger.service";
 export class LoggerFactory {
 
 	get(sourceId: string): ILog {
-		let logger = getLogger(sourceId);
+		const logger = getLogger(sourceId);
 		return new Log(logger);
 	}
 
