@@ -8,7 +8,7 @@
 [npm]: https://www.npmjs.com
 
 # ssv-au-core
-[![CircleCI](https://circleci.com/gh/sketch7/ssv-au-core.svg?style=svg)](https://circleci.com/gh/sketch7/ssv-au-core)
+[![CircleCI](https://circleci.com/gh/sketch7/ssv-au-core.svg?style=shield)](https://circleci.com/gh/sketch7/ssv-au-core)
 [![bitHound Overall Score](https://www.bithound.io/github/sketch7/ssv-au-core/badges/score.svg)](https://www.bithound.io/github/sketch7/ssv-au-core)
 [![npm version](https://badge.fury.io/js/%40ssv%2Fau-core.svg)](https://badge.fury.io/js/%40ssv%2Fau-core)
 
