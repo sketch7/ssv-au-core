@@ -9,16 +9,14 @@ const jestConfig = {
 	rootDir: 'source'
 };
 
-gulp.task("test", ["compile:test"], (cb) => {
+gulp.task("test", cb => {
 	return runSeq(
 		"compile:test",
 		"jest",
 		cb);
 });
 
-gulp.task("jest", () => {
-	jest.runCLI({ config: jestConfig }, ".", () => done());
-});
+gulp.task("jest", cb => jest.runCLI({ config: jestConfig }, ".", () => cb));
 
 gulp.task("compile:test", () => {
 	return ssvTools.compileTsc({
