@@ -77,7 +77,7 @@ Install/setup the following:
 
 
 ```bash
-npm install -g git gulp yarn jest-cli
+npm install -g git gulp yarn
 ```
 
 
