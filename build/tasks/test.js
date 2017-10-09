@@ -16,7 +16,7 @@ gulp.task("test", cb => {
 		cb);
 });
 
-gulp.task("jest", cb => jest.runCLI({ config: jestConfig }, ".", () => cb));
+gulp.task("jest", cb => jest.runCLI({ config: jestConfig }, ".", cb));
 
 gulp.task("compile:test", () => {
 	return ssvTools.compileTsc({
