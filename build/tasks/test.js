@@ -5,10 +5,6 @@ const runSeq = require("run-sequence");
 
 const args = require("../args");
 
-const jestConfig = {
-	rootDir: 'source'
-};
-
 gulp.task("test", cb => {
 	return runSeq(
 		"compile:test",
@@ -16,7 +12,11 @@ gulp.task("test", cb => {
 		cb);
 });
 
-gulp.task("jest", cb => jest.runCLI({ config: jestConfig }, ".", cb));
+gulp.task("jest", cb => jest.runCLI({
+	config: {
+		rootDir: "source"
+	}
+}, ".", cb));
 
 gulp.task("compile:test", () => {
 	return ssvTools.compileTsc({
