@@ -1,5 +1,20 @@
+<a name="0.3.9"></a>
+## [0.3.9](https://github.com/sketch7/ssv-au-core/compare/0.3.8...0.3.9) (2017-10-11)
+
+
+
+<a name="0.3.8"></a>
+## [0.3.8](https://github.com/sketch7/ssv-au-core/compare/0.3.7...0.3.8) (2017-10-11)
+
+
+### Features
+
+* **test:** replaced `Karma` with `Jest` ([8d58066](https://github.com/sketch7/ssv-au-core/commit/8d58066))
+
+
+
 <a name="0.3.7"></a>
-## [0.3.7](https://github.com/sketch7/ssv-au-core/compare/0.3.6...v0.3.7) (2017-03-16)
+## [0.3.7](https://github.com/sketch7/ssv-au-core/compare/0.3.6...0.3.7) (2017-03-16)
 
 
 ### Features
