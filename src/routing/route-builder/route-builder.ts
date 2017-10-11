@@ -19,7 +19,7 @@ export class RouteBuilder {
 	}
 
 	map(routes: Route[]) {
-		for (let route of routes) {
+		for (const route of routes) {
 
 			this.validate(route);
 			const selectedRoute = this.get(route.key);
@@ -38,7 +38,7 @@ export class RouteBuilder {
 	}
 
 	generateUrl(key: string, data?: any): string {
-		this.logger.debug("generateUrl", "searching route..", { key: key, data: data, routes: this.routes });
+		this.logger.debug("generateUrl", "searching route..", { key, data, routes: this.routes });
 
 		const route = this.get(key);
 
@@ -46,8 +46,8 @@ export class RouteBuilder {
 			throw Error(`generating url for route '${key}' not found!`);
 		}
 
-		let routePath = this.buildRoutePath(route, "", data);
-		this.logger.debug("generateUrl", "route found", { key: key, data: data, routePath: routePath });
+		const routePath = this.buildRoutePath(route, "", data);
+		this.logger.debug("generateUrl", "route found", { key, data, routePath });
 
 		return routePath;
 	}
@@ -78,7 +78,7 @@ export class RouteBuilder {
 	}
 
 	private buildRoutePath(menuItem: Route, routePath: string, data?: any): string {
-		this.logger.debug("buildRoutePath", "building route..", { menuItem: menuItem, routePath: routePath });
+		this.logger.debug("buildRoutePath", "building route..", { menuItem, routePath });
 		const route = menuItem.model.route;
 
 		let routeValue: string;

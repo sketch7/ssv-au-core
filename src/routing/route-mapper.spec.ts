@@ -68,7 +68,7 @@ describe("RouteMapper", () => {
 
 		describe("when a routeName contains more than one name", () => {
 			it("should generate a specific url", () => {
-				let result = SUT.generate("home");
+				const result = SUT.generate("home");
 				expect(result).toBe("/");
 			});
 		});
@@ -76,14 +76,14 @@ describe("RouteMapper", () => {
 		describe("when route exists in a child router", () => {
 
 			it("should generate a url with parameters", () => {
-				let result = SUT.generate("components.component-detail", {
+				const result = SUT.generate("components.component-detail", {
 					component: "input"
 				});
 				expect(result).toBe("/components/input");
 			});
 
 			it("should generate a url using 'useSpecificName' feature", () => {
-				let result = SUT.generate("component-create");
+				const result = SUT.generate("component-create");
 				expect(result).toBe("/components/create");
 			});
 		});

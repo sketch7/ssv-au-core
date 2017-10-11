@@ -6,7 +6,7 @@ import { string } from "@ssv/core";
 
 import { RouteConfig } from "./route-mapper.model";
 
-const seperator = ".";
+const separator = ".";
 
 @autoinject
 export class RouteMapper {
@@ -17,13 +17,13 @@ export class RouteMapper {
 	}
 
 	map(routes: RouteConfig[], parentName = "", parentRoute = ""): void {
-		for (let route of routes) {
+		for (const route of routes) {
 
 			const routeValue = typeof route.route === "string" ? route.route : route.route[0];
 
 			const routeName = route.settings && route.settings.useSpecificName
 				? route.name as string
-				: parentName ? `${parentName}${seperator}${route.name}` : route.name as string;
+				: parentName ? `${parentName}${separator}${route.name}` : route.name as string;
 
 			let routePath = parentRoute ? `${parentRoute}/${routeValue}` : routeValue;
 			if (routePath.indexOf("//") >= 0) {

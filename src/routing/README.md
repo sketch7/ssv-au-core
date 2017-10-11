@@ -26,10 +26,10 @@ Route mapper eager load all aurelia route hierarchy. This needs to be combined w
 ## Parameters
 Parameters need to be set within `route settings` property.
 
-| Name            | Type          | Default | Required | Description                                                                                                                    |
-|-----------------|---------------|---------|----------|--------------------------------------------------------------------------------------------------------------------------------|
-| useSpecificName | boolean       | false   | no       | `true`: exact route name need to be used as `route` for route recognition else it need all parent keys attached as route name. |
-| childRoutes     | RouteConfig[] |         | no*      | child routes for the current route.                                                                                            |
+| Name            | Type            | Default | Required | Description                                                                                                                    |
+|-----------------|-----------------|---------|----------|--------------------------------------------------------------------------------------------------------------------------------|
+| useSpecificName | `boolean`       | false   | no       | `true`: exact route name need to be used as `route` for route recognition else it need all parent keys attached as route name. |
+| childRoutes     | `RouteConfig[]` | -       | no*      | child routes for the current route.                                                                                            |
 
 *no**: *required when the `route` has `childRoutes`.
  
@@ -42,10 +42,10 @@ Parameters need to be set within `route settings` property.
 
 #### Parameters:
 
-| Name     | Type                 | Default                                 | Required | Description                                                       |
-|----------|----------------------|-----------------------------------------|----------|-------------------------------------------------------------------|
-| route    | RouteConfig          |                                         | yes      |                                                                   |
-| specific | Partial<RouteConfig> | { settings: { useSpecificName: true } } | no       | specific configuration which will overrides current configuration |
+| Name     | Type                   | Default                                   | Required | Description                                                        |
+|----------|------------------------|-------------------------------------------|----------|--------------------------------------------------------------------|
+| route    | `RouteConfig`          | -                                         | yes      | current route.                                                     |
+| specific | `Partial<RouteConfig>` | `{ settings: { useSpecificName: true } }` | no       | specific configuration which will overrides current configuration. |
 
 ```ts
 import { setRouteDefaults } from "@ssv/au-core";

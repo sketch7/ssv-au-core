@@ -19,8 +19,8 @@
 ```
 
 ### Parameters
-| Name      | Type   | Default | Required | Description                             |
-|-----------|--------|---------|----------|-----------------------------------------|
-| route     | string |         | yes      | route name to generate url for          |
-| params    | string |         | no       | params required for the specified route |
-| attribute | string | href    | no       | attribute to use to set url in          |
+| Name      | Type     | Default  | Required | Description                              |
+|-----------|----------|----------|----------|------------------------------------------|
+| route     | `string` | -        | yes      | route name to generate url for.          |
+| params    | `string` | -        | no       | params required for the specified route. |
+| attribute | `string` | `"href"` | no       | attribute to use to set url in.          |

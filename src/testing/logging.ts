@@ -1,8 +1,14 @@
 import { LoggerFactory } from "../logging/index";
+import { Log } from "../index";
 
 export function getMockLoggerFactory(): LoggerFactory {
-	const loggerFactory = jasmine.createSpyObj<LoggerFactory>("loggerFactory", ["get"]);
-	const logging = jasmine.createSpyObj("logging", ["debug", "error", "warn"]);
-	(<jasmine.Spy>loggerFactory.get).and.returnValue(logging);
-	return loggerFactory;
+	const factoryMock = jest.fn<LoggerFactory>(() => ({
+		get: jest.fn<Log>(() => ({
+			debug: jest.fn(),
+			info: jest.fn(),
+			warn: jest.fn(),
+			error: jest.fn()
+		}))
+	}));
+	return new factoryMock();
 }
