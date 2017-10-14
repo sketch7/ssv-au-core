@@ -1,3 +1,13 @@
+<a name="0.3.10"></a>
+## [0.3.10](https://github.com/sketch7/ssv-au-core/compare/0.3.9...0.3.10) (2017-10-14)
+
+
+### Bug Fixes
+
+* **web pack:** wrap `globalResources` in `PLATFORM.moduleName` ([5d2ad21](https://github.com/sketch7/ssv-au-core/commit/5d2ad21))
+
+
+
 <a name="0.3.9"></a>
 ## [0.3.9](https://github.com/sketch7/ssv-au-core/compare/0.3.8...0.3.9) (2017-10-11)
 
