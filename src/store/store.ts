@@ -1,14 +1,13 @@
-import * as _ from "lodash";
+import _ from "lodash";
 import { autoinject } from "aurelia-framework";
 import { EventAggregator } from "aurelia-event-aggregator";
 import { Subscription } from "./messaging.model";
-
 const stateChanged = "state-changed:";
 
 @autoinject
-export class Store<TAppState> {
+export class Store<TAppState extends object> {
 
-	private state: TAppState;
+	private state!: TAppState;
 
 	constructor(
 		private eventAggregator: EventAggregator
@@ -29,7 +28,8 @@ export class Store<TAppState> {
 	}
 
 	get<TStateKey extends keyof TAppState>(key: TStateKey): TAppState[TStateKey] {
-		return _.get<TAppState[TStateKey]>(_.pick(this.state, key), key) as TAppState[TStateKey];
+		const state = _.pick<TAppState, TStateKey>(this.state, key) as TAppState;
+		return _.get<TAppState, TStateKey>(state, key) as TAppState[TStateKey];
 	}
 
 	subscribe<TStateKey extends keyof TAppState>(key: TStateKey, callback: (state: TAppState[TStateKey]) => void): Subscription {

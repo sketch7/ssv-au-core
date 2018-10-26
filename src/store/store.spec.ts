@@ -31,7 +31,7 @@ describe("Store", () => {
 			SUT.initialize({ hero: { name: "Vegeta", strength: 19 } });
 		});
 
-		describe("when trying to retreive data", () => {
+		describe("when trying to retrieve data", () => {
 			it("should return data from the state", () => {
 				const result = SUT.get("hero");
 				expect(result.name).toBe("Vegeta");

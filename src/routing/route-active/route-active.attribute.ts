@@ -1,4 +1,4 @@
-import * as _ from "lodash";
+import _ from "lodash";
 import { autoinject } from "aurelia-dependency-injection";
 import { EventAggregator, Subscription } from "aurelia-event-aggregator";
 import { bindable, customAttribute } from "aurelia-templating";
@@ -13,17 +13,17 @@ import { routeActiveConfig, RouteActiveConfig } from "./route-active.config";
 export class RouteActiveAttribute {
 
 	@bindable({ primaryProperty: true, changeHandler: "attributeChanged" })
-	activeClass: string;
+	activeClass: string | undefined;
 
-	@bindable({ changeHandler: "attributeChanged" }) matchExact: boolean;
-	@bindable({ changeHandler: "attributeChanged" }) attribute: string;
-	@bindable({ changeHandler: "attributeChanged" }) url: string;
-	@bindable({ changeHandler: "attributeChanged" }) route: string;
+	@bindable({ changeHandler: "attributeChanged" }) matchExact: boolean | undefined;
+	@bindable({ changeHandler: "attributeChanged" }) attribute: string | undefined;
+	@bindable({ changeHandler: "attributeChanged" }) url: string | undefined;
+	@bindable({ changeHandler: "attributeChanged" }) route: string | undefined;
 	@bindable({ changeHandler: "attributeChanged" }) params: Object | undefined;
 
 	private logger: ILog;
-	private subscription$$: Subscription;
-	private config: RouteActiveConfig;
+	private subscription$$!: Subscription;
+	private config!: RouteActiveConfig;
 
 	constructor(
 		private element: Element,
@@ -71,9 +71,10 @@ export class RouteActiveAttribute {
 	}
 
 	private setDefaults(): void {
-		this.config = _.defaults<RouteActiveConfig>({
+		this.config = _.defaults<Partial<RouteActiveConfig>, RouteActiveConfig>({
 			activeClass: this.activeClass,
-			attribute: this.attribute
+			attribute: this.attribute,
+			matchExact: this.matchExact
 		}, routeActiveConfig);
 	}
 

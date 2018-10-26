@@ -1,4 +1,4 @@
-import * as _ from "lodash";
+import _ from "lodash";
 import { autoinject } from "aurelia-dependency-injection";
 import { string } from "@ssv/core";
 
