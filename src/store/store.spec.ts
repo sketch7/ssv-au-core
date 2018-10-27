@@ -34,12 +34,14 @@ describe("Store", () => {
 		describe("when trying to retrieve data", () => {
 			it("should return data from the state", () => {
 				const result = SUT.get("hero");
-				expect(result.name).toBe("Vegeta");
+				expect(result).not.toBe(null);
+				expect(result!.name).toBe("Vegeta");
 			});
 
 			it("should return all the state", () => {
 				const result = SUT.getState();
-				expect(result.hero.name).toBe("Vegeta");
+				expect(result).not.toBe(null);
+				expect(result!.hero.name).toBe("Vegeta");
 			});
 
 			it("should subscribe and receive updates", () => {
@@ -59,7 +61,8 @@ describe("Store", () => {
 			it("should save successfully", () => {
 				SUT.set("hero", { name: "Freeza", strength: 12 });
 				const result = SUT.get("hero");
-				expect(result.name).toBe("Freeza");
+				expect(result).not.toBe(null);
+				expect(result!.name).toBe("Freeza");
 			});
 		});
 

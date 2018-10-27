@@ -2,8 +2,8 @@
 ## [0.4.0](https://github.com/sketch7/ssv-au-core/compare/0.3.10...0.4.0) (2018-10-26)
 
 ### Chore
- - **build:** update CI and build tasks
-- **all:** cleanup and update changes breaking changes
+* **scripts:** update CI and build tasks
+* **all:** cleanup and update changes breaking changes
 * **deps:** update all dependencies
 
 

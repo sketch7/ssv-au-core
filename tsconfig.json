@@ -3,8 +3,7 @@
 	"compilerOptions": {
 		"types": [
 			"jest"
-    ],
-    "esModuleInterop": true
+    ]
 	},
 	"include": [
 		"src/**/*",
