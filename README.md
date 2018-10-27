@@ -7,7 +7,6 @@
 
 # ssv-au-core
 [![CircleCI](https://circleci.com/gh/sketch7/ssv-au-core.svg?style=shield)](https://circleci.com/gh/sketch7/ssv-au-core)
-[![bitHound Overall Score](https://www.bithound.io/github/sketch7/ssv-au-core/badges/score.svg)](https://www.bithound.io/github/sketch7/ssv-au-core)
 [![npm version](https://badge.fury.io/js/%40ssv%2Fau-core.svg)](https://badge.fury.io/js/%40ssv%2Fau-core)
 
 Core components, utilities and services for Aurelia by Sketch7.
@@ -65,9 +64,9 @@ aurelia.use.plugin("@ssv/au-core", config);
 ### Setup Machine for Development
 Install/setup the following:
 
-- NodeJS v8+
+- NodeJS v10+
 - Visual Studio Code or similar code editor
-- TypeScript 2.5+
+- TypeScript 3.1+
 - Git + SourceTree, SmartGit or similar (optional)
 - Ensure to install **global NPM modules** using the following:
 
