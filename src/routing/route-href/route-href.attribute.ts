@@ -9,7 +9,7 @@ import { RouteMapper } from "../route-mapper";
 export class RouteHrefAttribute {
 
 	@bindable({ primaryProperty: true, changeHandler: "processChange" })
-	route: string;
+	route: string | undefined;
 
 	@bindable({ changeHandler: "processChange" })
 	params: Object | undefined;
@@ -39,6 +39,10 @@ export class RouteHrefAttribute {
 	}
 
 	processChange() {
+		if (!this.route) {
+			return;
+		}
+
 		try {
 			const href = this.router.generate(this.route, this.params);
 			this.element.setAttribute(this.attribute, href);
